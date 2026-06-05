@@ -58,11 +58,11 @@ services:
     restart: unless-stopped
     # No SERVICE_FQDN_MCP_SERVER → stays internal, only reachable via mcp-proxy
 
-  mcp-proxy:
+  mcpproxy:
     build:
       context: ./mcp-proxy
     environment:
-      - SERVICE_FQDN_MCP_PROXY_9091
+      - SERVICE_FQDN_MCPPROXY_9091
       - MCP_UPSTREAM=http://mcp-server:9090
       - MCP_AUTH_TOKENS=${MCP_AUTH_TOKENS}
     depends_on:
@@ -70,8 +70,8 @@ services:
     restart: unless-stopped
     labels:
       # Tighten Traefik's flush interval for SSE so events stream without buffering.
-      # The middleware + X-Accel-Buffering header is also set inside mcp-proxy/main.py.
-      - "traefik.http.services.mcp-proxy.loadbalancer.responseForwarding.flushInterval=10ms"
+      # The X-Accel-Buffering response header is also set inside mcp-proxy/main.py.
+      - "traefik.http.services.mcpproxy.loadbalancer.responseForwarding.flushInterval=10ms"
 
   frontend:
     build:

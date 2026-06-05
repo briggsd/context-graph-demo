@@ -8,7 +8,7 @@ This stack ships as five services in `docker-compose.coolify.yml`:
 | `backend`   | FastAPI app + agent                  | Yes     |
 | `frontend`  | Next.js UI                           | Yes     |
 | `mcp-server`| Neo4j-agent-memory MCP over SSE      | No      |
-| `mcp-proxy` | Bearer-auth front for `mcp-server`   | Yes     |
+| `mcpproxy`  | Bearer-auth front for `mcp-server`   | Yes     |
 
 The MCP server is intentionally **never exposed directly** — clients go
 through `mcp-proxy`, which checks `Authorization: Bearer <token>` before
@@ -54,8 +54,13 @@ deploy.
 ```
 SERVICE_FQDN_FRONTEND_3000=https://cg.example.com
 SERVICE_FQDN_BACKEND_8000=https://cg-api.example.com
-SERVICE_FQDN_MCP_PROXY_9091=https://cg-mcp.example.com
+SERVICE_FQDN_MCPPROXY_9091=https://cg-mcp.example.com
 ```
+
+> ⚠️ Note the env var is `SERVICE_FQDN_MCPPROXY_9091` (no underscore). Coolify
+> derives the magic-env name from the compose service name, and the service
+> is named `mcpproxy` — hyphens in service names confuse Coolify's parser, so
+> we keep it as one word.
 
 Then point those DNS A records at the Coolify host. **Include the
 `https://` scheme** — it's part of the value, not just the hostname.
@@ -126,7 +131,7 @@ entryPoints:
         idleTimeout: 3600s
 ```
 
-The compose file already sets `flushInterval=10ms` on the `mcp-proxy`
+The compose file already sets `flushInterval=10ms` on the `mcpproxy`
 service, so SSE events should stream immediately without buffering.
 
 ### `NEXT_PUBLIC_API_URL` is wrong after changing the backend domain
@@ -143,7 +148,7 @@ new value.
 ### Token rotation
 
 Edit `MCP_AUTH_TOKENS` in Coolify (comma-separated allowlist), then restart
-just the `mcp-proxy` service. Old tokens stop working immediately. No
+just the `mcpproxy` service. Old tokens stop working immediately. No
 backend or neo4j restart needed.
 
 ## Notes
