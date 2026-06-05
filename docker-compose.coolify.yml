@@ -97,7 +97,10 @@ services:
       - "traefik.http.routers.cg-backend-https.rule=Host(`${SERVICE_FQDN_BACKEND}`)"
       - "traefik.http.routers.cg-backend-https.tls=true"
       - "traefik.http.routers.cg-backend-https.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.cg-backend-https.middlewares=gzip,cg-web-auth"
+      # Backend has no BasicAuth — the frontend JS calls /api/* cross-origin
+      # and browsers won't send BasicAuth credentials to a different origin.
+      # CORS (CORS_ORIGINS=frontend domain) limits direct browser access.
+      - "traefik.http.routers.cg-backend-https.middlewares=gzip"
       - "traefik.http.services.cg-backend.loadbalancer.server.port=8000"
       - "traefik.http.routers.cg-backend-http.service=cg-backend"
       - "traefik.http.routers.cg-backend-https.service=cg-backend"
