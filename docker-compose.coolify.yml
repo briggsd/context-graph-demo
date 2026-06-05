@@ -61,6 +61,10 @@ services:
   mcpproxy:
     build:
       context: ./mcp-proxy
+    # Explicit compose-level expose so Coolify's magic-env parser sees the port
+    # and generates SERVICE_FQDN_MCPPROXY_9091 (with port suffix) on first deploy.
+    expose:
+      - "9091"
     environment:
       - SERVICE_FQDN_MCPPROXY_9091
       - MCP_UPSTREAM=http://mcp-server:9090
