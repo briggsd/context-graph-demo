@@ -86,7 +86,12 @@ services:
         # Coolify-assigned URL (e.g. https://backend-abc123.example.com).
         NEXT_PUBLIC_API_URL: ${SERVICE_FQDN_BACKEND_8000}/api
     environment:
+      # Coolify's parser produces a malformed PHP array (mixed int/string keys)
+      # if the list contains ONLY a bare SERVICE_FQDN_* entry, which crashes
+      # `docker compose build` with "non-string key in environment: 0".
+      # Adding a second concrete entry fixes the list->map conversion.
       - SERVICE_FQDN_FRONTEND_3000
+      - PORT=3000
     depends_on: [backend]
     restart: unless-stopped
 
