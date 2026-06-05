@@ -130,7 +130,8 @@ services:
       context: ./frontend
       dockerfile: ../Dockerfile.frontend
       args:
-        NEXT_PUBLIC_API_URL: https://${SERVICE_FQDN_BACKEND}/api
+        # SERVICE_URL_BACKEND includes the https:// scheme (SERVICE_FQDN_BACKEND does not)
+        NEXT_PUBLIC_API_URL: ${SERVICE_URL_BACKEND}/api
     environment:
       PORT: "3000"
     depends_on: [backend]
