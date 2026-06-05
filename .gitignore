@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment
+.env
+.env.local
+
+# Local MCP config (contains API key — use claude_desktop_config.example.json as template)
+mcp/claude_desktop_config.json
+
+# uv lockfiles for the proxy build context (built from pyproject.toml)
+mcp-proxy/.venv/
+mcp-proxy/uv.lock
+
+# Build
+.next/
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data
+data/documents/*.json
+data/documents/*.txt

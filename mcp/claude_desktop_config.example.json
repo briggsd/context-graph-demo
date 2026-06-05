@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "my-app-memory": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory", "/ABSOLUTE/PATH/TO/my-app/backend",
+        "python", "mcp_server.py"
+      ],
+      "env": {
+        "NEO4J_URI": "neo4j://localhost:7687",
+        "NEO4J_USERNAME": "neo4j",
+        "NEO4J_PASSWORD": "REPLACE_ME",
+        "ANTHROPIC_API_KEY": "sk-ant-REPLACE_ME",
+        "MEMORY_EMBEDDING": "sentence-transformers/all-MiniLM-L6-v2",
+        "MCP_TRANSPORT": "stdio"
+      }
+    }
+  }
+}
