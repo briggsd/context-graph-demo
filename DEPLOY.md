@@ -1,55 +1,62 @@
 # Deploying to Coolify
 
-This stack ships as five services in `docker-compose.coolify.yml`:
+Five services in `docker-compose.coolify.yml`:
 
-| Service     | Purpose                              | Public? |
-|-------------|--------------------------------------|---------|
-| `neo4j`     | Graph database + GDS + APOC          | No      |
-| `backend`   | FastAPI app + agent                  | Yes     |
-| `frontend`  | Next.js UI                           | Yes     |
-| `mcp-server`| Neo4j-agent-memory MCP over SSE      | No      |
-| `mcpproxy`  | Bearer-auth front for `mcp-server`   | Yes     |
+| Service     | Public? | Purpose                            |
+|-------------|---------|------------------------------------|
+| `neo4j`     | No      | Graph DB + GDS + APOC              |
+| `mcp-server`| No      | MCP SSE server (internal only)     |
+| `backend`   | Yes     | FastAPI + agent                    |
+| `frontend`  | Yes     | Next.js UI                         |
+| `mcpproxy`  | Yes     | Bearer-auth front for `mcp-server` |
 
-The MCP server is intentionally **never exposed directly** — clients go
-through `mcp-proxy`, which checks `Authorization: Bearer <token>` before
-forwarding.
+All routing uses Coolify's `SERVICE_FQDN_*` magic env pattern — no Domains-
+tab or Labels-tab clicking required.
 
-This compose file uses Coolify's "magic" `SERVICE_FQDN_*` env vars, so you
-**do not have to use the Domains tab** — Coolify auto-generates and wires
-domains for the three public services.
+---
 
-## 1. Connect the repo
+## 1. Create the resource
 
-1. **New Resource → Docker Compose → Public Repository** (or Private + GitHub App)
-2. Repository: this repo
+In Coolify:
+
+1. **New Resource → Docker Compose → Public Repository**
+2. Repository: `https://github.com/briggsd/context-graph-demo`
 3. Branch: `main`
-4. **Compose file path:** `docker-compose.coolify.yml`
-5. Click **Save**. Coolify reads the compose and shows you the env vars it
-   detected (including `SERVICE_FQDN_*` and `${...}` substitutions).
+4. **Compose file path: `docker-compose.coolify.yml`** ← this field is the one people miss
+5. Save
+
+Coolify parses the compose and lists detected env vars in the Environment
+Variables tab.
 
 ## 2. Set environment variables
 
-In Coolify's **Environment Variables** tab, set these.
+In the **Environment Variables** tab, add the following.
 
 ### Secrets (toggle "Is Secret" on)
 
-| Variable | How to generate |
-|---|---|
-| `ANTHROPIC_API_KEY` | from console.anthropic.com |
-| `NEO4J_PASSWORD` | `openssl rand -hex 24` |
-| `MCP_AUTH_TOKENS` | `openssl rand -hex 32` (comma-separate for multiple clients) |
+```
+ANTHROPIC_API_KEY=sk-ant-...
+NEO4J_PASSWORD=<openssl rand -hex 24>
+MCP_AUTH_TOKENS=<openssl rand -hex 32>
+```
 
-### Domains (plain — these are public values)
+`MCP_AUTH_TOKENS` is comma-separated if you want multiple clients with
+independently revocable tokens.
 
-You have two options:
+### Domain assignment (pick A or B)
 
-**Option A — let Coolify auto-assign domains** (easiest, gives ugly URLs):
-Leave `SERVICE_FQDN_FRONTEND_3000`, `SERVICE_FQDN_BACKEND_8000`, and
-`SERVICE_FQDN_MCP_PROXY_9091` blank. Coolify will fill them in with auto-
-generated subdomains of the Coolify instance's wildcard domain on first
-deploy.
+**Option A — Coolify auto-assigns subdomains of its wildcard.** Leave these
+three variables blank (or don't add them — Coolify auto-detects from the
+compose file):
 
-**Option B — use your own domains** (recommended). Add these env vars:
+```
+SERVICE_FQDN_FRONTEND_3000
+SERVICE_FQDN_BACKEND_8000
+SERVICE_FQDN_MCPPROXY_9091
+```
+
+**Option B — use your own domains.** Set explicit values (note: include the
+`https://` scheme):
 
 ```
 SERVICE_FQDN_FRONTEND_3000=https://cg.example.com
@@ -57,72 +64,83 @@ SERVICE_FQDN_BACKEND_8000=https://cg-api.example.com
 SERVICE_FQDN_MCPPROXY_9091=https://cg-mcp.example.com
 ```
 
-> ⚠️ Note the env var is `SERVICE_FQDN_MCPPROXY_9091` (no underscore). Coolify
-> derives the magic-env name from the compose service name, and the service
-> is named `mcpproxy` — hyphens in service names confuse Coolify's parser, so
-> we keep it as one word.
+Then add DNS A records for the three subdomains pointing at the Coolify host.
 
-Then point those DNS A records at the Coolify host. **Include the
-`https://` scheme** — it's part of the value, not just the hostname.
+> ⚠️ **`SERVICE_FQDN_MCPPROXY_9091` quirk.** Coolify sometimes lists this as
+> `SERVICE_FQDN_MCPPROXY` (without the port suffix). If you see that, manually
+> add `SERVICE_FQDN_MCPPROXY_9091` as a new variable. The compose file
+> declares `expose: ["9091"]` to make Coolify pick it up, but older Coolify
+> versions miss it. Both names map to the same container, but the port-
+> suffixed name routes to the right port reliably.
 
 ## 3. Deploy
 
-Click **Deploy**. Coolify will:
-- Build the three Dockerfiles (`backend`, `frontend`, `mcp-proxy`)
-- Pull `neo4j:5.26.0`
-- Auto-generate Traefik routes for the three public services
-- Auto-issue Let's Encrypt certs for any custom domains you provided
+Click **Deploy**. Watch the build logs — `frontend` and `backend` are slow
+the first time (Python + npm installs). Expect ~5 minutes total on a small
+VPS.
 
-On first deploy, watch the logs for the `frontend` build — `NEXT_PUBLIC_API_URL`
-is baked in at that moment from `SERVICE_FQDN_BACKEND_8000`, so if you change
-the backend domain later you must **rebuild** the frontend, not just restart.
+Coolify will:
+- Build all three Dockerfiles (`backend`, `frontend`, `mcp-proxy`)
+- Pull `neo4j:5.26.0`
+- Wire Traefik routes for the three public services with auto Let's Encrypt
 
 ## 4. (Optional) Seed the graph
 
-After the first deploy succeeds, seed the demo data from the backend container:
+After the first deploy is green, load demo data:
+
+1. Coolify → `backend` service → **Terminal** tab
+2. Run: `uv run python scripts/generate_data.py`
+
+55 entities, 125 relationships, 25 documents, 10 decision traces.
+
+Skip this step if you'd rather start with an empty graph that the agent
+populates from chat.
+
+## 5. Smoke-test from your laptop
 
 ```bash
-# In Coolify: click the backend service → Terminal tab → run:
-uv run python scripts/generate_data.py
-```
+# Open the UI
+open https://cg.example.com
 
-Or skip seeding — the agent will populate the graph as users chat with it.
-
-## 5. Connect a client
-
-### Smoke test from your laptop
-
-```bash
+# Test the MCP proxy
 TOKEN=<one MCP_AUTH_TOKENS value>
 curl -sN -H "authorization: Bearer $TOKEN" \
   https://cg-mcp.example.com/sse | head -3
 ```
 
-Expect:
-
+Expected output:
 ```
 event: endpoint
 data: /messages/?session_id=...
 ```
 
-### Pi extension
+If you get:
+- **HTML or 404** → routing/port issue (see troubleshooting)
+- **401 / 403** → routing works, token mismatch
+- **`event: endpoint`** → you're done
+
+## 6. Connect the pi extension
 
 ```bash
 export MCP_URL=https://cg-mcp.example.com/sse
-export MCP_AUTH_TOKEN=<one of the tokens>
+export MCP_AUTH_TOKEN=<one of MCP_AUTH_TOKENS>
+
+cd /path/to/this/repo/..   # one dir up — where .pi/extensions/ lives
 pi -p "what services are degraded?"
 ```
 
-The `.pi/extensions/neo4j-memory` extension (one level up from this dir)
-reads both env vars and connects to your deployed proxy.
+The `.pi/extensions/neo4j-memory` extension reads both env vars, connects
+through the auth proxy, and registers all 16 MCP tools.
+
+---
 
 ## Troubleshooting
 
-### Long-lived SSE connections drop after ~30 seconds
+### SSE connections drop after ~30s
 
-Coolify's global Traefik has a default idle timeout. Bump it:
+Coolify's global Traefik default idle timeout. **Settings → Proxy → Add
+custom config:**
 
-**Settings → Proxy → Add custom config:**
 ```yaml
 entryPoints:
   https:
@@ -131,30 +149,37 @@ entryPoints:
         idleTimeout: 3600s
 ```
 
-The compose file already sets `flushInterval=10ms` on the `mcpproxy`
-service, so SSE events should stream immediately without buffering.
+The compose file sets `flushInterval=10ms` on `mcpproxy`, and `mcp-proxy/main.py`
+sets `X-Accel-Buffering: no` — so events stream immediately. The above only
+addresses the long-lived connection drop.
 
-### `NEXT_PUBLIC_API_URL` is wrong after changing the backend domain
+### `NEXT_PUBLIC_API_URL` is wrong after changing backend domain
 
-`NEXT_PUBLIC_*` vars are baked into the Next.js bundle at build time, not
-runtime. Click **Redeploy** (not just Restart) on the frontend service.
+It's baked into the Next.js bundle at build time. **Redeploy** the frontend
+(not just restart) so it picks up the new `SERVICE_FQDN_BACKEND_8000`.
 
-### Frontend can't reach backend (CORS errors)
+### Frontend can't reach backend (CORS)
 
-`CORS_ORIGINS` is set from `SERVICE_FQDN_FRONTEND_3000`. If you changed the
-frontend domain after first deploy, redeploy the backend so it picks up the
-new value.
+`backend.CORS_ORIGINS` is derived from `SERVICE_FQDN_FRONTEND_3000`. If you
+changed the frontend domain, redeploy the backend so it re-reads the env.
 
-### Token rotation
+### Rotating a token
 
-Edit `MCP_AUTH_TOKENS` in Coolify (comma-separated allowlist), then restart
-just the `mcpproxy` service. Old tokens stop working immediately. No
-backend or neo4j restart needed.
+Edit `MCP_AUTH_TOKENS` in Coolify, then restart only the `mcpproxy` service.
+Old tokens stop working immediately.
+
+### Coolify created `SERVICE_FQDN_MCPPROXY` without `_9091`
+
+This is the documented quirk above. Manually add `SERVICE_FQDN_MCPPROXY_9091`
+to the env vars (empty value → auto-domain, or set to your custom domain).
+After Coolify accepts it, redeploy `mcpproxy`.
+
+---
 
 ## Notes
 
-- **No JWT support yet.** Static bearer tokens only. Swap `_check_auth` in
-  `mcp-proxy/main.py` for a JWKS validator if you want OAuth.
-- **No rate limiting.** Add `slowapi` to `mcp-proxy/main.py` if needed.
-- **Neo4j memory.** The compose file sets a 2G heap. Bump it if your graph
-  grows past ~100K nodes.
+- **No JWT yet.** Static bearer tokens. To swap to JWT/OAuth, replace
+  `_check_auth` in `mcp-proxy/main.py` with a JWKS validator.
+- **No rate limiting.** Add `slowapi` to the proxy if you need per-token rate limits.
+- **Neo4j heap** is set to 2G. Bump `NEO4J_server_memory_heap_max__size` in
+  compose if the graph grows past ~100K nodes.
