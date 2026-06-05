@@ -1,14 +1,27 @@
 # Coolify deployment compose for Software Engineering Context Graph.
 #
 # All routing is handled via Coolify "magic" env vars (SERVICE_FQDN_*).
-# You only need to fill in the Environment Variables tab in Coolify — no
-# Domains-tab clicking required.
+# Set the values you want for the three SERVICE_FQDN_* vars in the
+# Coolify Environment Variables tab — or leave them blank for auto-domains.
 #
-# IMPORTANT: All services use MAP-style `environment:` not LIST-style.
-# Coolify's parser corrupts bare `- SERVICE_FQDN_X_PORT` list entries into
-# integer-keyed array elements that then collide with auto-injected
-# string-keyed entries, producing a malformed mixed array that crashes
-# `docker compose build` with "non-string key in environment: 0".
+# ⚠️ COOLIFY PARSER WORKAROUND
+#
+# Coolify's parseDockerComposeFile() has a bug where the bare list-style entry
+# `- SERVICE_FQDN_X_PORT` (with no =value) survives at integer key 0 in the
+# resulting PHP array while sibling auto-injected entries become string-keyed.
+# Symfony Yaml dumps that mixed array as malformed YAML, and the subsequent
+# `docker compose build` fails with:
+#
+#     non-string key in services.<service>.environment: 0
+#
+# The bug only triggers when a SERVICE_FQDN_* var is declared in the
+# environment of the SAME service it routes to (e.g. SERVICE_FQDN_FRONTEND_3000
+# inside frontend's environment).
+#
+# WORKAROUND: declare ALL SERVICE_FQDN_* magic vars in the *backend* service's
+# environment using map-style syntax. Coolify routes the resulting domains
+# by name (FRONTEND_3000 → frontend:3000, MCPPROXY_9091 → mcpproxy:9091,
+# etc.) regardless of which service declared the variable, so this is safe.
 
 services:
   neo4j:
@@ -26,16 +39,17 @@ services:
       timeout: 5s
       retries: 10
     restart: unless-stopped
-    # No SERVICE_FQDN_NEO4J → stays internal
 
   backend:
     build:
       context: ./backend
       dockerfile: ../Dockerfile.backend
     environment:
-      # Magic env: empty value tells Coolify to auto-generate the domain.
-      # Override in the Coolify UI Env Vars tab to set your own domain.
+      # All three magic-env declarations live here (workaround — see header).
+      # Empty string = auto-generate; set explicit https://... to use your domain.
       SERVICE_FQDN_BACKEND_8000: ""
+      SERVICE_FQDN_FRONTEND_3000: ""
+      SERVICE_FQDN_MCPPROXY_9091: ""
       NEO4J_URI: bolt://neo4j:7687
       NEO4J_USERNAME: neo4j
       NEO4J_PASSWORD: ${NEO4J_PASSWORD}
@@ -62,25 +76,19 @@ services:
     depends_on:
       neo4j: { condition: service_healthy }
     restart: unless-stopped
-    # No SERVICE_FQDN_MCP_SERVER → stays internal, only reachable via mcpproxy
 
   mcpproxy:
     build:
       context: ./mcp-proxy
-    # Explicit compose-level expose so Coolify's magic-env parser sees the port
-    # and generates SERVICE_FQDN_MCPPROXY_9091 (with port suffix).
     expose:
       - "9091"
     environment:
-      SERVICE_FQDN_MCPPROXY_9091: ""
       MCP_UPSTREAM: http://mcp-server:9090
       MCP_AUTH_TOKENS: ${MCP_AUTH_TOKENS}
     depends_on:
       - mcp-server
     restart: unless-stopped
     labels:
-      # Tighten Traefik's flush interval for SSE so events stream without buffering.
-      # The X-Accel-Buffering response header is also set inside mcp-proxy/main.py.
       - "traefik.http.services.mcpproxy.loadbalancer.responseForwarding.flushInterval=10ms"
 
   frontend:
@@ -88,11 +96,8 @@ services:
       context: ./frontend
       dockerfile: ../Dockerfile.frontend
       args:
-        # Baked at build time. ${SERVICE_FQDN_BACKEND_8000} resolves to the
-        # Coolify-assigned URL (e.g. https://backend-abc123.example.com).
         NEXT_PUBLIC_API_URL: ${SERVICE_FQDN_BACKEND_8000}/api
     environment:
-      SERVICE_FQDN_FRONTEND_3000: ""
       PORT: "3000"
     depends_on: [backend]
     restart: unless-stopped
