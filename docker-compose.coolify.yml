@@ -16,6 +16,10 @@
 #
 # Required secrets (set in Coolify Environment Variables tab):
 #   ANTHROPIC_API_KEY, NEO4J_PASSWORD, MCP_AUTH_TOKENS
+#   WEB_AUTH_USERS  — htpasswd-format user list for the web UI and API
+#                     Generate: htpasswd -nb user password
+#                     or: python3 -c "import hashlib,base64; print('user:{SHA}'+base64.b64encode(hashlib.sha1(b'pass').digest()).decode())"
+#                     Escape $ as $$ in the value stored in Coolify.
 
 services:
 
@@ -64,6 +68,8 @@ services:
     build:
       context: ./backend
       dockerfile: ../Dockerfile.backend
+    # WEB_AUTH_USERS is shared by backend + frontend so both need the same creds.
+    # The frontend's browser fetches /api/* so both must accept the same header.
     environment:
       NEO4J_URI: bolt://neo4j:7687
       NEO4J_USERNAME: neo4j
@@ -84,12 +90,14 @@ services:
       - "traefik.http.routers.cg-backend-http.entrypoints=http"
       - "traefik.http.routers.cg-backend-http.rule=Host(`${SERVICE_FQDN_BACKEND}`)"
       - "traefik.http.routers.cg-backend-http.middlewares=redirect-to-https"
-      # HTTPS
+      # HTTPS + BasicAuth
+      - "traefik.http.middlewares.cg-web-auth.basicauth.users=${WEB_AUTH_USERS}"
+      - "traefik.http.middlewares.cg-web-auth.basicauth.removeheader=true"
       - "traefik.http.routers.cg-backend-https.entrypoints=https"
       - "traefik.http.routers.cg-backend-https.rule=Host(`${SERVICE_FQDN_BACKEND}`)"
       - "traefik.http.routers.cg-backend-https.tls=true"
       - "traefik.http.routers.cg-backend-https.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.cg-backend-https.middlewares=gzip"
+      - "traefik.http.routers.cg-backend-https.middlewares=gzip,cg-web-auth"
       - "traefik.http.services.cg-backend.loadbalancer.server.port=8000"
       - "traefik.http.routers.cg-backend-http.service=cg-backend"
       - "traefik.http.routers.cg-backend-https.service=cg-backend"
@@ -146,12 +154,12 @@ services:
       - "traefik.http.routers.cg-frontend-http.entrypoints=http"
       - "traefik.http.routers.cg-frontend-http.rule=Host(`${SERVICE_FQDN_FRONTEND}`)"
       - "traefik.http.routers.cg-frontend-http.middlewares=redirect-to-https"
-      # HTTPS
+      # HTTPS + BasicAuth (same middleware, defined once on backend)
       - "traefik.http.routers.cg-frontend-https.entrypoints=https"
       - "traefik.http.routers.cg-frontend-https.rule=Host(`${SERVICE_FQDN_FRONTEND}`)"
       - "traefik.http.routers.cg-frontend-https.tls=true"
       - "traefik.http.routers.cg-frontend-https.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.cg-frontend-https.middlewares=gzip"
+      - "traefik.http.routers.cg-frontend-https.middlewares=gzip,cg-web-auth"
       - "traefik.http.services.cg-frontend.loadbalancer.server.port=3000"
       - "traefik.http.routers.cg-frontend-http.service=cg-frontend"
       - "traefik.http.routers.cg-frontend-https.service=cg-frontend"
