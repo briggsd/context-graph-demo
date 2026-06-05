@@ -1,18 +1,8 @@
 # Coolify deployment compose for Software Engineering Context Graph.
 #
-# Required environment variables (set in Coolify UI as secrets):
-#   ANTHROPIC_API_KEY     — Anthropic key for the agent
-#   NEO4J_PASSWORD        — strong password for Neo4j
-#   MCP_AUTH_TOKENS       — comma-separated bearer tokens for MCP proxy
-#   FRONTEND_DOMAIN       — e.g. cg.example.com  (used in CORS)
-#   BACKEND_DOMAIN        — e.g. cg-api.example.com (baked into Next.js build)
-#
-# Coolify assigns Traefik domains per service via its UI:
-#   frontend     → FRONTEND_DOMAIN     port 3000
-#   backend      → BACKEND_DOMAIN      port 8000
-#   mcp-proxy    → MCP_DOMAIN          port 9091  (the ONLY MCP entry exposed)
-#   neo4j        → keep internal (no public domain)
-#   mcp-server   → keep internal (no public domain)
+# All routing is handled via Coolify "magic" env vars (SERVICE_FQDN_*).
+# You only need to fill in the Environment Variables tab in Coolify — no
+# Domains-tab clicking required.
 
 services:
   neo4j:
@@ -30,18 +20,22 @@ services:
       timeout: 5s
       retries: 10
     restart: unless-stopped
+    # No SERVICE_FQDN_NEO4J → stays internal
 
   backend:
     build:
       context: ./backend
       dockerfile: ../Dockerfile.backend
     environment:
-      NEO4J_URI: bolt://neo4j:7687
-      NEO4J_USERNAME: neo4j
-      NEO4J_PASSWORD: ${NEO4J_PASSWORD}
-      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
-      MEMORY_EMBEDDING: sentence-transformers/all-MiniLM-L6-v2
-      CORS_ORIGINS: https://${FRONTEND_DOMAIN}
+      # Magic env: Coolify auto-generates a domain for port 8000 on first deploy.
+      # Override in the Coolify UI Env Vars tab to set your own domain.
+      - SERVICE_FQDN_BACKEND_8000
+      - NEO4J_URI=bolt://neo4j:7687
+      - NEO4J_USERNAME=neo4j
+      - NEO4J_PASSWORD=${NEO4J_PASSWORD}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - MEMORY_EMBEDDING=sentence-transformers/all-MiniLM-L6-v2
+      - CORS_ORIGINS=${SERVICE_FQDN_FRONTEND_3000}
     depends_on:
       neo4j: { condition: service_healthy }
     restart: unless-stopped
@@ -62,28 +56,33 @@ services:
     depends_on:
       neo4j: { condition: service_healthy }
     restart: unless-stopped
-    # No public domain: only reachable from inside the compose network
+    # No SERVICE_FQDN_MCP_SERVER → stays internal, only reachable via mcp-proxy
 
   mcp-proxy:
     build:
       context: ./mcp-proxy
     environment:
-      MCP_UPSTREAM: http://mcp-server:9090
-      MCP_AUTH_TOKENS: ${MCP_AUTH_TOKENS}
+      - SERVICE_FQDN_MCP_PROXY_9091
+      - MCP_UPSTREAM=http://mcp-server:9090
+      - MCP_AUTH_TOKENS=${MCP_AUTH_TOKENS}
     depends_on:
       - mcp-server
     restart: unless-stopped
-    # SSE-friendly Traefik config (add via Coolify "Container Labels"):
-    #   traefik.http.middlewares.mcp-sse.headers.customResponseHeaders.X-Accel-Buffering=no
-    #   traefik.http.routers.mcp-proxy.middlewares=mcp-sse
-    #   traefik.http.services.mcp-proxy.loadbalancer.responseForwarding.flushInterval=10ms
+    labels:
+      # Tighten Traefik's flush interval for SSE so events stream without buffering.
+      # The middleware + X-Accel-Buffering header is also set inside mcp-proxy/main.py.
+      - "traefik.http.services.mcp-proxy.loadbalancer.responseForwarding.flushInterval=10ms"
 
   frontend:
     build:
       context: ./frontend
       dockerfile: ../Dockerfile.frontend
       args:
-        NEXT_PUBLIC_API_URL: https://${BACKEND_DOMAIN}/api
+        # Baked at build time. ${SERVICE_FQDN_BACKEND_8000} resolves to the
+        # Coolify-assigned URL (e.g. https://backend-abc123.example.com).
+        NEXT_PUBLIC_API_URL: ${SERVICE_FQDN_BACKEND_8000}/api
+    environment:
+      - SERVICE_FQDN_FRONTEND_3000
     depends_on: [backend]
     restart: unless-stopped
 
