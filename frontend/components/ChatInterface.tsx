@@ -8,7 +8,7 @@ import {
 import { Send, RotateCcw, ChevronDown, Wrench, Check, Bot, User, Sparkles } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { API_BASE, DEMO_SCENARIOS, DOMAIN } from "@/lib/config";
+import { API_BASE, DEMO_SCENARIOS, DOMAIN, apiHeaders } from "@/lib/config";
 import type { GraphData } from "@/lib/config";
 
 interface ToolCall {
@@ -256,7 +256,7 @@ export function ChatInterface({ onGraphUpdate, externalInput, onExternalInputCon
     try {
       const res = await fetch(`${API_BASE}/chat/stream`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: apiHeaders({ "Content-Type": "application/json" }),
         body: JSON.stringify({
           message: messageText,
           session_id: sessionId,

@@ -19,7 +19,7 @@ const ContextGraphView = dynamic(
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { DecisionTracePanel } from "@/components/DecisionTracePanel";
 import { DocumentBrowser } from "@/components/DocumentBrowser";
-import { DOMAIN, API_BASE } from "@/lib/config";
+import { DOMAIN, API_BASE, apiHeaders } from "@/lib/config";
 import type { GraphData } from "@/lib/config";
 
 type PanelId = "chat" | "graph" | "details";

@@ -87,11 +87,16 @@ def get_memory_status() -> bool:
     """Check if the memory backend is available."""
     return _memory_available
 
+from fastapi import Depends
+from app.auth import require_auth
+
 app = FastAPI(
     title="Software Engineering Context Graph",
     description="Software development lifecycle, repositories, issues, deployments, and team collaboration",
     version="0.1.0",
     lifespan=lifespan,
+    # Global BasicAuth — only active when BASIC_AUTH_USER + BASIC_AUTH_PASSWORD are set
+    dependencies=[Depends(require_auth)],
 )
 
 
@@ -111,7 +116,7 @@ app.add_middleware(
 app.include_router(router, prefix="/api")
 
 
-@app.get("/health")
+@app.get("/health", dependencies=[])  # exempt from global BasicAuth
 async def health():
     """Health check endpoint with memory backend connectivity status."""
     if settings.memory_backend == "nams":

@@ -14,7 +14,7 @@ import {
 import { FileText, ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { API_BASE } from "@/lib/config";
+import { API_BASE, apiHeaders } from "@/lib/config";
 
 const PAGE_SIZE = 20;
 
@@ -57,7 +57,7 @@ export function DocumentBrowser() {
       if (filterTemplate) params.set("template_id", filterTemplate);
       params.set("skip", String(page * PAGE_SIZE));
       params.set("limit", String(PAGE_SIZE + 1)); // fetch one extra to detect more
-      const res = await fetch(`${API_BASE}/documents?${params}`, { signal: AbortSignal.timeout(10000) });
+      const res = await fetch(`${API_BASE}/documents?${params}`, { signal: AbortSignal.timeout(10000), headers: apiHeaders() });
       const data = await res.json();
       const docs = data.documents || [];
       setHasMore(docs.length > PAGE_SIZE);
@@ -71,7 +71,7 @@ export function DocumentBrowser() {
     try {
       const res = await fetch(
         `${API_BASE}/documents/${encodeURIComponent(title)}`,
-        { signal: AbortSignal.timeout(10000) }
+        { signal: AbortSignal.timeout(10000), headers: apiHeaders() }
       );
       const data = await res.json();
       setSelectedDoc(data);

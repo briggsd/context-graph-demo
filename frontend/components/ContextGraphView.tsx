@@ -20,6 +20,7 @@ import {
   SCHEMA_NODE_SIZE,
   SCHEMA_REL_COLOR,
   API_BASE,
+  apiHeaders,
 } from "@/lib/config";
 import type { GraphData } from "@/lib/config";
 
@@ -199,7 +200,7 @@ export function ContextGraphView({ externalGraphData, onAskAbout }: ContextGraph
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`${API_BASE}/schema/visualization`, { signal: AbortSignal.timeout(10000) });
+      const res = await fetch(`${API_BASE}/schema/visualization`, { signal: AbortSignal.timeout(10000), headers: apiHeaders() });
       const data = await res.json();
       if (data.nodes && data.relationships) {
         // db.schema.visualization() returns serialized Node/Relationship objects
@@ -237,7 +238,7 @@ export function ContextGraphView({ externalGraphData, onAskAbout }: ContextGraph
         try {
           const res = await fetch(`${API_BASE}/cypher`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: apiHeaders({ "Content-Type": "application/json" }),
             body: JSON.stringify({
               query: `MATCH (n:\`${label}\`)-[r]-(m) RETURN n, r, m LIMIT 50`,
             }),
@@ -265,7 +266,7 @@ export function ContextGraphView({ externalGraphData, onAskAbout }: ContextGraph
       try {
         const res = await fetch(`${API_BASE}/expand`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: apiHeaders({ "Content-Type": "application/json" }),
           body: JSON.stringify({ element_id: node.id }),
           signal: AbortSignal.timeout(10000),
         });

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Box, Heading, Text, VStack, HStack, Badge, Flex } from "@chakra-ui/react";
 import { GitBranch, Brain, Wrench, Eye } from "lucide-react";
-import { API_BASE } from "@/lib/config";
+import { API_BASE, apiHeaders } from "@/lib/config";
 
 interface TraceStep {
   step_number: number;
@@ -29,7 +29,7 @@ export function DecisionTracePanel() {
 
   async function loadTraces() {
     try {
-      const res = await fetch(`${API_BASE}/traces`, { signal: AbortSignal.timeout(10000) });
+      const res = await fetch(`${API_BASE}/traces`, { signal: AbortSignal.timeout(10000), headers: apiHeaders() });
       const data = await res.json();
       if (data.traces) {
         setTraces(

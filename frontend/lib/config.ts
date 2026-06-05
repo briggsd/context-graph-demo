@@ -12,6 +12,19 @@ export const DOMAIN = {
 
 export const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
 
+/**
+ * Returns headers to include on every backend API call.
+ * NEXT_PUBLIC_BASIC_AUTH = base64(user:pass) — set when BASIC_AUTH is enabled.
+ * Generate: python3 -c "import base64; print(base64.b64encode(b'user:pass').decode())"
+ */
+export function apiHeaders(extra?: Record<string, string>): Record<string, string> {
+  const auth = process.env.NEXT_PUBLIC_BASIC_AUTH;
+  return {
+    ...(auth ? { Authorization: `Basic ${auth}` } : {}),
+    ...extra,
+  };
+}
+
 export const NODE_COLORS: Record<string, string> = {"Deployment": "#f59e0b", "Event": "#f97316", "Incident": "#dc2626", "Issue": "#ef4444", "Location": "#a855f7", "Object": "#eab308", "Organization": "#3b82f6", "Person": "#22c55e", "PullRequest": "#14b8a6", "Repository": "#6366f1", "Service": "#0ea5e9"};
 
 export const NODE_SIZES: Record<string, number> = {"Deployment": 15, "Event": 20, "Incident": 25, "Issue": 15, "Location": 20, "Object": 20, "Organization": 20, "Person": 20, "PullRequest": 15, "Repository": 25, "Service": 30};
