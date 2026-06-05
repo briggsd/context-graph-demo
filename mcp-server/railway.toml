@@ -1,0 +1,10 @@
+$schema = "https://railway.com/railway.schema.json"
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "mcp-server/Dockerfile"
+# Set root directory to repo root in Railway dashboard
+
+[deploy]
+startCommand = "uv run python mcp_server.py"
+restartPolicyType = "ON_FAILURE"

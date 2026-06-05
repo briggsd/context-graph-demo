@@ -11,4 +11,5 @@ COPY main.py ./
 
 EXPOSE 9091
 
-CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "9091"]
+# Railway injects $PORT; default to 9091 for local/Coolify
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT:-9091}"]
