@@ -1,29 +1,26 @@
-# Coolify deployment compose for Software Engineering Context Graph.
+# Coolify deployment — Raw Compose Mode
 #
-# All routing is handled via Coolify "magic" env vars (SERVICE_FQDN_*).
-# Set the values you want for the three SERVICE_FQDN_* vars in the
-# Coolify Environment Variables tab — or leave them blank for auto-domains.
+# Raw compose mode is enabled via Coolify's DB so this file is deployed
+# verbatim without Coolify's parser mutations (which corrupt SERVICE_FQDN_*
+# vars into mixed int/string PHP arrays that crash `docker compose build`).
 #
-# ⚠️ COOLIFY PARSER WORKAROUND
+# Routing is handled via explicit Traefik labels. Domains come from
+# Coolify's env var store and are injected via the .env file at deploy time:
 #
-# Coolify's parseDockerComposeFile() has a bug where the bare list-style entry
-# `- SERVICE_FQDN_X_PORT` (with no =value) survives at integer key 0 in the
-# resulting PHP array while sibling auto-injected entries become string-keyed.
-# Symfony Yaml dumps that mixed array as malformed YAML, and the subsequent
-# `docker compose build` fails with:
+#   SERVICE_FQDN_BACKEND   = backend-<uuid>.apps.circlebackhq.com
+#   SERVICE_FQDN_FRONTEND  = frontend-<uuid>.apps.circlebackhq.com
+#   SERVICE_FQDN_MCPPROXY  = mcpproxy-<uuid>.apps.circlebackhq.com
 #
-#     non-string key in services.<service>.environment: 0
+# Public services attach to the `coolify` external network so Traefik
+# can reach them. Internal services stay on the default compose network.
 #
-# The bug only triggers when a SERVICE_FQDN_* var is declared in the
-# environment of the SAME service it routes to (e.g. SERVICE_FQDN_FRONTEND_3000
-# inside frontend's environment).
-#
-# WORKAROUND: declare ALL SERVICE_FQDN_* magic vars in the *backend* service's
-# environment using map-style syntax. Coolify routes the resulting domains
-# by name (FRONTEND_3000 → frontend:3000, MCPPROXY_9091 → mcpproxy:9091,
-# etc.) regardless of which service declared the variable, so this is safe.
+# Required secrets (set in Coolify Environment Variables tab):
+#   ANTHROPIC_API_KEY, NEO4J_PASSWORD, MCP_AUTH_TOKENS
 
 services:
+
+  # ── Internal ─────────────────────────────────────────────────────────────
+
   neo4j:
     image: neo4j:5.26.0
     environment:
@@ -39,26 +36,8 @@ services:
       timeout: 5s
       retries: 10
     restart: unless-stopped
-
-  backend:
-    build:
-      context: ./backend
-      dockerfile: ../Dockerfile.backend
-    environment:
-      # All three magic-env declarations live here (workaround — see header).
-      # Empty string = auto-generate; set explicit https://... to use your domain.
-      SERVICE_FQDN_BACKEND_8000: ""
-      SERVICE_FQDN_FRONTEND_3000: ""
-      SERVICE_FQDN_MCPPROXY_9091: ""
-      NEO4J_URI: bolt://neo4j:7687
-      NEO4J_USERNAME: neo4j
-      NEO4J_PASSWORD: ${NEO4J_PASSWORD}
-      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
-      MEMORY_EMBEDDING: sentence-transformers/all-MiniLM-L6-v2
-      CORS_ORIGINS: ${SERVICE_FQDN_FRONTEND_3000}
-    depends_on:
-      neo4j: { condition: service_healthy }
-    restart: unless-stopped
+    networks:
+      - default
 
   mcp-server:
     build:
@@ -76,6 +55,44 @@ services:
     depends_on:
       neo4j: { condition: service_healthy }
     restart: unless-stopped
+    networks:
+      - default
+
+  # ── Public (Traefik-routed) ───────────────────────────────────────────────
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../Dockerfile.backend
+    environment:
+      NEO4J_URI: bolt://neo4j:7687
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: ${NEO4J_PASSWORD}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      MEMORY_EMBEDDING: sentence-transformers/all-MiniLM-L6-v2
+      CORS_ORIGINS: https://${SERVICE_FQDN_FRONTEND}
+    depends_on:
+      neo4j: { condition: service_healthy }
+    restart: unless-stopped
+    networks:
+      - default
+      - coolify
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
+      # HTTP → redirect to HTTPS
+      - "traefik.http.routers.cg-backend-http.entrypoints=http"
+      - "traefik.http.routers.cg-backend-http.rule=Host(`${SERVICE_FQDN_BACKEND}`)"
+      - "traefik.http.routers.cg-backend-http.middlewares=redirect-to-https"
+      # HTTPS
+      - "traefik.http.routers.cg-backend-https.entrypoints=https"
+      - "traefik.http.routers.cg-backend-https.rule=Host(`${SERVICE_FQDN_BACKEND}`)"
+      - "traefik.http.routers.cg-backend-https.tls=true"
+      - "traefik.http.routers.cg-backend-https.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.cg-backend-https.middlewares=gzip"
+      - "traefik.http.services.cg-backend.loadbalancer.server.port=8000"
+      - "traefik.http.routers.cg-backend-http.service=cg-backend"
+      - "traefik.http.routers.cg-backend-https.service=cg-backend"
 
   mcpproxy:
     build:
@@ -88,20 +105,62 @@ services:
     depends_on:
       - mcp-server
     restart: unless-stopped
+    networks:
+      - default
+      - coolify
     labels:
-      - "traefik.http.services.mcpproxy.loadbalancer.responseForwarding.flushInterval=10ms"
+      - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
+      # HTTP → redirect to HTTPS
+      - "traefik.http.routers.cg-mcpproxy-http.entrypoints=http"
+      - "traefik.http.routers.cg-mcpproxy-http.rule=Host(`${SERVICE_FQDN_MCPPROXY}`)"
+      - "traefik.http.routers.cg-mcpproxy-http.middlewares=redirect-to-https"
+      # HTTPS with SSE-friendly settings
+      - "traefik.http.routers.cg-mcpproxy-https.entrypoints=https"
+      - "traefik.http.routers.cg-mcpproxy-https.rule=Host(`${SERVICE_FQDN_MCPPROXY}`)"
+      - "traefik.http.routers.cg-mcpproxy-https.tls=true"
+      - "traefik.http.routers.cg-mcpproxy-https.tls.certresolver=letsencrypt"
+      - "traefik.http.services.cg-mcpproxy.loadbalancer.server.port=9091"
+      - "traefik.http.services.cg-mcpproxy.loadbalancer.responseForwarding.flushInterval=10ms"
+      - "traefik.http.routers.cg-mcpproxy-http.service=cg-mcpproxy"
+      - "traefik.http.routers.cg-mcpproxy-https.service=cg-mcpproxy"
 
   frontend:
     build:
       context: ./frontend
       dockerfile: ../Dockerfile.frontend
       args:
-        NEXT_PUBLIC_API_URL: ${SERVICE_FQDN_BACKEND_8000}/api
+        NEXT_PUBLIC_API_URL: https://${SERVICE_FQDN_BACKEND}/api
     environment:
       PORT: "3000"
     depends_on: [backend]
     restart: unless-stopped
+    networks:
+      - default
+      - coolify
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
+      # HTTP → redirect to HTTPS
+      - "traefik.http.routers.cg-frontend-http.entrypoints=http"
+      - "traefik.http.routers.cg-frontend-http.rule=Host(`${SERVICE_FQDN_FRONTEND}`)"
+      - "traefik.http.routers.cg-frontend-http.middlewares=redirect-to-https"
+      # HTTPS
+      - "traefik.http.routers.cg-frontend-https.entrypoints=https"
+      - "traefik.http.routers.cg-frontend-https.rule=Host(`${SERVICE_FQDN_FRONTEND}`)"
+      - "traefik.http.routers.cg-frontend-https.tls=true"
+      - "traefik.http.routers.cg-frontend-https.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.cg-frontend-https.middlewares=gzip"
+      - "traefik.http.services.cg-frontend.loadbalancer.server.port=3000"
+      - "traefik.http.routers.cg-frontend-http.service=cg-frontend"
+      - "traefik.http.routers.cg-frontend-https.service=cg-frontend"
 
 volumes:
   neo4j_data:
   neo4j_logs:
+
+networks:
+  default:
+    driver: bridge
+  coolify:
+    external: true   # Traefik lives here — public services join this network
