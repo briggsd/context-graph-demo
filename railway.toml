@@ -1,0 +1,11 @@
+# Root-level railway.toml — used by the mcp-server service (root dir = /)
+# Other services use their own subdirectory root dirs (backend/, frontend/, mcp-proxy/)
+# so they read their own railway.toml and this one doesn't affect them.
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "mcp-server/Dockerfile"
+
+[deploy]
+startCommand = "uv run python mcp_server.py"
+restartPolicyType = "ON_FAILURE"
