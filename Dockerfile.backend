@@ -18,5 +18,5 @@ COPY . .
 
 EXPOSE 8000
 
-# Railway injects $PORT; default to 8000 for local/Coolify
-CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "${PORT:-8000}"]
+# Shell form so ${PORT:-8000} expands correctly on Railway and locally
+CMD uv run uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
