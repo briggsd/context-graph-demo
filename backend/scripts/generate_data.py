@@ -10,7 +10,11 @@ from app.config import settings
 from app.context_graph_client import connect_neo4j, close_neo4j, execute_cypher
 
 
-DATA_DIR = Path(__file__).parent.parent.parent / "data"
+# Look for fixtures relative to the backend package root (/app/data in container,
+# backend/data locally) — works for both Dockerfile build contexts.
+_script_parent = Path(__file__).parent.parent  # backend/ or /app
+_repo_parent   = _script_parent.parent          # repo root (local only)
+DATA_DIR = _script_parent / "data" if (_script_parent / "data").exists() else _repo_parent / "data"
 
 
 async def apply_schema():

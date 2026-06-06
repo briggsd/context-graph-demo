@@ -1,0 +1,1678 @@
+{
+  "domain": "software-engineering",
+  "entities": {
+    "Person": [
+      {
+        "name": "Staff Engineer Sarah Chen",
+        "email": "staff.chen@example.com",
+        "role": "Staff Engineer",
+        "description": "Staff Engineer Sarah Chen, staff engineer specializing in software engineering."
+      },
+      {
+        "name": "SRE Lead James Morrison",
+        "email": "sre.morrison@company.org",
+        "role": "SRE",
+        "description": "SRE SRE Lead James Morrison \u2014 active in the software engineering sector with relevant domain expertise."
+      },
+      {
+        "name": "Principal Engineer Maria Rodriguez",
+        "email": "principal.rodriguez@acme.co",
+        "role": "DevOps Engineer",
+        "description": "Principal Engineer Maria Rodriguez serves as devops engineer, contributing to software engineering initiatives and operations."
+      },
+      {
+        "name": "DevOps Manager David Park",
+        "email": "devops.park@example.com",
+        "role": "Security Engineer",
+        "description": "DevOps Manager David Park, security engineer specializing in software engineering."
+      },
+      {
+        "name": "Security Engineer Elena Volkov",
+        "email": "security.volkov@corp.net",
+        "role": "Platform Engineer",
+        "description": "Platform Engineer Security Engineer Elena Volkov \u2014 active in the software engineering sector with relevant domain expertise."
+      }
+    ],
+    "Organization": [
+      {
+        "name": "TechStream Inc",
+        "description": "TechStream Inc is a software development organization operating in the software engineering space.",
+        "industry": "Software Development"
+      },
+      {
+        "name": "CloudScale Systems",
+        "description": "Cloud Computing entity CloudScale Systems, providing services and resources for software engineering operations.",
+        "industry": "Cloud Computing"
+      },
+      {
+        "name": "DataPipe Solutions",
+        "description": "DataPipe Solutions \u2014 a cybersecurity institution active in software engineering.",
+        "industry": "Cybersecurity"
+      },
+      {
+        "name": "Nexus Platform Corp",
+        "description": "Nexus Platform Corp is a devops organization operating in the software engineering space.",
+        "industry": "DevOps"
+      },
+      {
+        "name": "OpenGrid Technologies",
+        "description": "SaaS entity OpenGrid Technologies, providing services and resources for software engineering operations.",
+        "industry": "SaaS"
+      }
+    ],
+    "Location": [
+      {
+        "name": "Production Datacenter",
+        "address": "741 Chestnut Terrace, Atlanta, GA 30301",
+        "latitude": 36.75,
+        "longitude": -75.38
+      },
+      {
+        "name": "Staging Environment",
+        "address": "369 Spruce Circle, Chicago, IL 60601",
+        "latitude": 37.8,
+        "longitude": -87.51
+      },
+      {
+        "name": "CI/CD Build Farm",
+        "address": "741 Chestnut Terrace, Austin, TX 78701",
+        "latitude": 35.23,
+        "longitude": -107.64
+      },
+      {
+        "name": "Disaster Recovery Site",
+        "address": "741 Chestnut Terrace, Chicago, IL 60601",
+        "latitude": 40.1,
+        "longitude": -83.75
+      },
+      {
+        "name": "Production Datacenter A",
+        "address": "456 Oak Avenue, San Francisco, CA 94105",
+        "latitude": 47.5,
+        "longitude": -117.41
+      }
+    ],
+    "Event": [
+      {
+        "name": "Sprint Retrospective",
+        "date": "2024-07-05T15:45:00",
+        "description": "Sprint Retrospective, a event event recorded in the software engineering timeline."
+      },
+      {
+        "name": "Incident Post-Mortem",
+        "date": "2025-05-19T10:15:00",
+        "description": "Event Incident Post-Mortem \u2014 occurred as part of software engineering activities."
+      },
+      {
+        "name": "Architecture Review Board",
+        "date": "2025-06-08T09:00:00",
+        "description": "Recorded event: Architecture Review Board, relevant to software engineering workflows."
+      },
+      {
+        "name": "On-Call Handoff",
+        "date": "2025-04-02T11:45:00",
+        "description": "On-Call Handoff, a event event recorded in the software engineering timeline."
+      },
+      {
+        "name": "Production Deploy Window",
+        "date": "2025-08-25T15:00:00",
+        "description": "Event Production Deploy Window \u2014 occurred as part of software engineering activities."
+      }
+    ],
+    "Object": [
+      {
+        "name": "Architecture Decision Record",
+        "description": "Architecture Decision Record, a object used in software engineering workflows."
+      },
+      {
+        "name": "Incident Report",
+        "description": "Object Incident Report \u2014 cataloged for software engineering operations."
+      },
+      {
+        "name": "Runbook for Database Failover",
+        "description": "Runbook for Database Failover is a object supporting software engineering processes."
+      },
+      {
+        "name": "API Specification",
+        "description": "API Specification, a object used in software engineering workflows."
+      },
+      {
+        "name": "Load Test Results",
+        "description": "Object Load Test Results \u2014 cataloged for software engineering operations."
+      }
+    ],
+    "Repository": [
+      {
+        "name": "auth-service",
+        "language": "English",
+        "description": "auth-service, a repository relevant to software engineering operations.",
+        "visibility": "public",
+        "default_branch": "auth-service - Default Branch"
+      },
+      {
+        "name": "frontend-dashboard",
+        "language": "Spanish",
+        "description": "Repository frontend-dashboard \u2014 part of the software engineering knowledge graph.",
+        "visibility": "private",
+        "default_branch": "frontend-dashboard - Default Branch"
+      },
+      {
+        "name": "api-gateway",
+        "language": "French",
+        "description": "api-gateway is a repository tracked within the software engineering domain.",
+        "visibility": "internal",
+        "default_branch": "api-gateway - Default Branch"
+      },
+      {
+        "name": "data-pipeline",
+        "language": "Mandarin",
+        "description": "data-pipeline, a repository relevant to software engineering operations.",
+        "visibility": "public",
+        "default_branch": "data-pipeline - Default Branch"
+      },
+      {
+        "name": "notification-engine",
+        "language": "German",
+        "description": "Repository notification-engine \u2014 part of the software engineering knowledge graph.",
+        "visibility": "private",
+        "default_branch": "notification-engine - Default Branch"
+      }
+    ],
+    "Issue": [
+      {
+        "name": "Memory leak in worker pool",
+        "issue_id": "ISS-2026-0000",
+        "title": "Staff Engineer",
+        "status": "open",
+        "priority": "critical",
+        "description": "Memory leak in worker pool, a issue relevant to software engineering operations.",
+        "created_date": "2025-05-23T10:00:00"
+      },
+      {
+        "name": "OAuth2 token refresh fails silently",
+        "issue_id": "ISS-2026-0001",
+        "title": "SRE",
+        "status": "in_progress",
+        "priority": "high",
+        "description": "Issue OAuth2 token refresh fails silently \u2014 part of the software engineering knowledge graph.",
+        "created_date": "2026-06-08T16:15:00"
+      },
+      {
+        "name": "Dashboard shows stale data",
+        "issue_id": "ISS-2026-0002",
+        "title": "DevOps Engineer",
+        "status": "review",
+        "priority": "medium",
+        "description": "Dashboard shows stale data is a issue tracked within the software engineering domain.",
+        "created_date": "2026-10-25T12:15:00"
+      },
+      {
+        "name": "Rate limiter too aggressive",
+        "issue_id": "ISS-2026-0003",
+        "title": "Security Engineer",
+        "status": "closed",
+        "priority": "low",
+        "description": "Rate limiter too aggressive, a issue relevant to software engineering operations.",
+        "created_date": "2025-10-13T11:45:00"
+      },
+      {
+        "name": "Search results not paginated",
+        "issue_id": "ISS-2026-0004",
+        "title": "Platform Engineer",
+        "status": "open",
+        "priority": "critical",
+        "description": "Issue Search results not paginated \u2014 part of the software engineering knowledge graph.",
+        "created_date": "2026-04-07T10:15:00"
+      }
+    ],
+    "PullRequest": [
+      {
+        "name": "Fix OAuth2 token refresh",
+        "pr_id": "PR-2024-0000",
+        "title": "Staff Engineer",
+        "status": "draft",
+        "lines_added": 292,
+        "lines_removed": 863,
+        "created_date": "2026-01-28T17:15:00"
+      },
+      {
+        "name": "Add rate limiting middleware",
+        "pr_id": "PR-2026-0001",
+        "title": "SRE",
+        "status": "open",
+        "lines_added": 4207,
+        "lines_removed": 9508,
+        "created_date": "2024-05-02T08:00:00"
+      },
+      {
+        "name": "Migrate to PostgreSQL 16",
+        "pr_id": "PR-2024-0002",
+        "title": "DevOps Engineer",
+        "status": "review",
+        "lines_added": 7843,
+        "lines_removed": 6313,
+        "created_date": "2026-04-19T17:15:00"
+      },
+      {
+        "name": "Implement WebSocket notifications",
+        "pr_id": "PR-2025-0003",
+        "title": "Security Engineer",
+        "status": "merged",
+        "lines_added": 2134,
+        "lines_removed": 4375,
+        "created_date": "2025-03-15T13:00:00"
+      },
+      {
+        "name": "Add Prometheus metrics",
+        "pr_id": "PR-2024-0004",
+        "title": "Platform Engineer",
+        "status": "closed",
+        "lines_added": 654,
+        "lines_removed": 4786,
+        "created_date": "2026-01-05T13:30:00"
+      }
+    ],
+    "Deployment": [
+      {
+        "name": "Production v2.4.1",
+        "deployment_id": "DEP-2024-0000",
+        "environment": "development",
+        "status": "pending",
+        "version": "Production v2.4.1 - Version",
+        "date": "2025-05-31T13:15:00"
+      },
+      {
+        "name": "Staging v2.5.0-rc1",
+        "deployment_id": "DEP-2025-0001",
+        "environment": "staging",
+        "status": "in_progress",
+        "version": "Staging v2.5.0-rc1 - Version",
+        "date": "2024-09-30T08:15:00"
+      },
+      {
+        "name": "Canary deploy auth-service",
+        "deployment_id": "DEP-2026-0002",
+        "environment": "production",
+        "status": "success",
+        "version": "Canary deploy auth-service - Version",
+        "date": "2025-12-05T17:15:00"
+      },
+      {
+        "name": "Hotfix v2.4.2",
+        "deployment_id": "DEP-2025-0003",
+        "environment": "development",
+        "status": "failed",
+        "version": "Hotfix v2.4.2 - Version",
+        "date": "2025-05-31T10:00:00"
+      },
+      {
+        "name": "Blue/Green switch v3.0.0",
+        "deployment_id": "DEP-2026-0004",
+        "environment": "staging",
+        "status": "rolled_back",
+        "version": "Blue/Green switch v3.0.0 - Version",
+        "date": "2024-02-02T10:45:00"
+      }
+    ],
+    "Service": [
+      {
+        "name": "user-api",
+        "service_type": "api",
+        "status": "healthy",
+        "description": "user-api, a service relevant to software engineering operations."
+      },
+      {
+        "name": "payment-gateway",
+        "service_type": "worker",
+        "status": "degraded",
+        "description": "Service payment-gateway \u2014 part of the software engineering knowledge graph."
+      },
+      {
+        "name": "notification-service",
+        "service_type": "frontend",
+        "status": "down",
+        "description": "notification-service is a service tracked within the software engineering domain."
+      },
+      {
+        "name": "search-indexer",
+        "service_type": "database",
+        "status": "healthy",
+        "description": "search-indexer, a service relevant to software engineering operations."
+      },
+      {
+        "name": "cdn-proxy",
+        "service_type": "cache",
+        "status": "degraded",
+        "description": "Service cdn-proxy \u2014 part of the software engineering knowledge graph."
+      }
+    ],
+    "Incident": [
+      {
+        "name": "INC-2025-041 Database failover",
+        "incident_id": "INC-2024-0000",
+        "title": "Staff Engineer",
+        "severity": "sev1",
+        "status": "detected",
+        "started_at": "2025-03-18T14:00:00",
+        "resolved_at": "2024-01-21T14:00:00"
+      },
+      {
+        "name": "INC-2025-078 API latency spike",
+        "incident_id": "INC-2026-0001",
+        "title": "SRE",
+        "severity": "sev2",
+        "status": "investigating",
+        "started_at": "2025-01-10T09:15:00",
+        "resolved_at": "2025-09-29T10:15:00"
+      },
+      {
+        "name": "INC-2025-112 Certificate expiry",
+        "incident_id": "INC-2024-0002",
+        "title": "DevOps Engineer",
+        "severity": "sev3",
+        "status": "mitigating",
+        "started_at": "2025-09-14T09:45:00",
+        "resolved_at": "2024-11-04T12:45:00"
+      },
+      {
+        "name": "INC-2025-156 DDoS mitigation",
+        "incident_id": "INC-2024-0003",
+        "title": "Security Engineer",
+        "severity": "sev4",
+        "status": "resolved",
+        "started_at": "2024-02-21T17:00:00",
+        "resolved_at": "2026-08-04T16:00:00"
+      },
+      {
+        "name": "INC-2025-189 Data corruption",
+        "incident_id": "INC-2025-0004",
+        "title": "Platform Engineer",
+        "severity": "sev1",
+        "status": "postmortem",
+        "started_at": "2024-08-26T14:45:00",
+        "resolved_at": "2026-12-18T10:00:00"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Staff Engineer Sarah Chen",
+      "target_label": "Organization",
+      "target_name": "OpenGrid Technologies"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Staff Engineer Sarah Chen",
+      "target_label": "Organization",
+      "target_name": "Nexus Platform Corp"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "SRE Lead James Morrison",
+      "target_label": "Organization",
+      "target_name": "TechStream Inc"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Principal Engineer Maria Rodriguez",
+      "target_label": "Organization",
+      "target_name": "OpenGrid Technologies"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Principal Engineer Maria Rodriguez",
+      "target_label": "Organization",
+      "target_name": "DataPipe Solutions"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "DevOps Manager David Park",
+      "target_label": "Organization",
+      "target_name": "CloudScale Systems"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "DevOps Manager David Park",
+      "target_label": "Organization",
+      "target_name": "Nexus Platform Corp"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Security Engineer Elena Volkov",
+      "target_label": "Organization",
+      "target_name": "DataPipe Solutions"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Security Engineer Elena Volkov",
+      "target_label": "Organization",
+      "target_name": "TechStream Inc"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "TechStream Inc",
+      "target_label": "Location",
+      "target_name": "CI/CD Build Farm"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "TechStream Inc",
+      "target_label": "Location",
+      "target_name": "Production Datacenter A"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "CloudScale Systems",
+      "target_label": "Location",
+      "target_name": "Production Datacenter"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "DataPipe Solutions",
+      "target_label": "Location",
+      "target_name": "Production Datacenter"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "DataPipe Solutions",
+      "target_label": "Location",
+      "target_name": "Production Datacenter A"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Nexus Platform Corp",
+      "target_label": "Location",
+      "target_name": "Staging Environment"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Nexus Platform Corp",
+      "target_label": "Location",
+      "target_name": "Production Datacenter A"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "OpenGrid Technologies",
+      "target_label": "Location",
+      "target_name": "Staging Environment"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "OpenGrid Technologies",
+      "target_label": "Location",
+      "target_name": "Disaster Recovery Site"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Staff Engineer Sarah Chen",
+      "target_label": "Event",
+      "target_name": "Production Deploy Window"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Staff Engineer Sarah Chen",
+      "target_label": "Event",
+      "target_name": "On-Call Handoff"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "SRE Lead James Morrison",
+      "target_label": "Event",
+      "target_name": "On-Call Handoff"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Principal Engineer Maria Rodriguez",
+      "target_label": "Event",
+      "target_name": "On-Call Handoff"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "DevOps Manager David Park",
+      "target_label": "Event",
+      "target_name": "Incident Post-Mortem"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Security Engineer Elena Volkov",
+      "target_label": "Event",
+      "target_name": "On-Call Handoff"
+    },
+    {
+      "type": "AUTHORED",
+      "source_label": "Person",
+      "source_name": "Staff Engineer Sarah Chen",
+      "target_label": "PullRequest",
+      "target_name": "Add Prometheus metrics"
+    },
+    {
+      "type": "AUTHORED",
+      "source_label": "Person",
+      "source_name": "Staff Engineer Sarah Chen",
+      "target_label": "PullRequest",
+      "target_name": "Add rate limiting middleware"
+    },
+    {
+      "type": "AUTHORED",
+      "source_label": "Person",
+      "source_name": "SRE Lead James Morrison",
+      "target_label": "PullRequest",
+      "target_name": "Add rate limiting middleware"
+    },
+    {
+      "type": "AUTHORED",
+      "source_label": "Person",
+      "source_name": "SRE Lead James Morrison",
+      "target_label": "PullRequest",
+      "target_name": "Implement WebSocket notifications"
+    },
+    {
+      "type": "AUTHORED",
+      "source_label": "Person",
+      "source_name": "Principal Engineer Maria Rodriguez",
+      "target_label": "PullRequest",
+      "target_name": "Add Prometheus metrics"
+    },
+    {
+      "type": "AUTHORED",
+      "source_label": "Person",
+      "source_name": "DevOps Manager David Park",
+      "target_label": "PullRequest",
+      "target_name": "Implement WebSocket notifications"
+    },
+    {
+      "type": "AUTHORED",
+      "source_label": "Person",
+      "source_name": "DevOps Manager David Park",
+      "target_label": "PullRequest",
+      "target_name": "Add rate limiting middleware"
+    },
+    {
+      "type": "AUTHORED",
+      "source_label": "Person",
+      "source_name": "Security Engineer Elena Volkov",
+      "target_label": "PullRequest",
+      "target_name": "Implement WebSocket notifications"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Person",
+      "source_name": "Staff Engineer Sarah Chen",
+      "target_label": "PullRequest",
+      "target_name": "Fix OAuth2 token refresh"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Person",
+      "source_name": "Staff Engineer Sarah Chen",
+      "target_label": "PullRequest",
+      "target_name": "Add Prometheus metrics"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Person",
+      "source_name": "SRE Lead James Morrison",
+      "target_label": "PullRequest",
+      "target_name": "Implement WebSocket notifications"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Person",
+      "source_name": "Principal Engineer Maria Rodriguez",
+      "target_label": "PullRequest",
+      "target_name": "Implement WebSocket notifications"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Person",
+      "source_name": "DevOps Manager David Park",
+      "target_label": "PullRequest",
+      "target_name": "Implement WebSocket notifications"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Person",
+      "source_name": "Security Engineer Elena Volkov",
+      "target_label": "PullRequest",
+      "target_name": "Fix OAuth2 token refresh"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Person",
+      "source_name": "Security Engineer Elena Volkov",
+      "target_label": "PullRequest",
+      "target_name": "Add rate limiting middleware"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "Issue",
+      "source_name": "Memory leak in worker pool",
+      "target_label": "Person",
+      "target_name": "Principal Engineer Maria Rodriguez"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "Issue",
+      "source_name": "Memory leak in worker pool",
+      "target_label": "Person",
+      "target_name": "Staff Engineer Sarah Chen"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "Issue",
+      "source_name": "OAuth2 token refresh fails silently",
+      "target_label": "Person",
+      "target_name": "Staff Engineer Sarah Chen"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "Issue",
+      "source_name": "OAuth2 token refresh fails silently",
+      "target_label": "Person",
+      "target_name": "Principal Engineer Maria Rodriguez"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "Issue",
+      "source_name": "Dashboard shows stale data",
+      "target_label": "Person",
+      "target_name": "DevOps Manager David Park"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "Issue",
+      "source_name": "Dashboard shows stale data",
+      "target_label": "Person",
+      "target_name": "Security Engineer Elena Volkov"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "Issue",
+      "source_name": "Rate limiter too aggressive",
+      "target_label": "Person",
+      "target_name": "Security Engineer Elena Volkov"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "Issue",
+      "source_name": "Rate limiter too aggressive",
+      "target_label": "Person",
+      "target_name": "SRE Lead James Morrison"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "Issue",
+      "source_name": "Search results not paginated",
+      "target_label": "Person",
+      "target_name": "Staff Engineer Sarah Chen"
+    },
+    {
+      "type": "FILED_BY",
+      "source_label": "Issue",
+      "source_name": "Memory leak in worker pool",
+      "target_label": "Person",
+      "target_name": "Security Engineer Elena Volkov"
+    },
+    {
+      "type": "FILED_BY",
+      "source_label": "Issue",
+      "source_name": "OAuth2 token refresh fails silently",
+      "target_label": "Person",
+      "target_name": "DevOps Manager David Park"
+    },
+    {
+      "type": "FILED_BY",
+      "source_label": "Issue",
+      "source_name": "OAuth2 token refresh fails silently",
+      "target_label": "Person",
+      "target_name": "Staff Engineer Sarah Chen"
+    },
+    {
+      "type": "FILED_BY",
+      "source_label": "Issue",
+      "source_name": "Dashboard shows stale data",
+      "target_label": "Person",
+      "target_name": "DevOps Manager David Park"
+    },
+    {
+      "type": "FILED_BY",
+      "source_label": "Issue",
+      "source_name": "Rate limiter too aggressive",
+      "target_label": "Person",
+      "target_name": "Security Engineer Elena Volkov"
+    },
+    {
+      "type": "FILED_BY",
+      "source_label": "Issue",
+      "source_name": "Search results not paginated",
+      "target_label": "Person",
+      "target_name": "Staff Engineer Sarah Chen"
+    },
+    {
+      "type": "BELONGS_TO",
+      "source_label": "Issue",
+      "source_name": "Memory leak in worker pool",
+      "target_label": "Repository",
+      "target_name": "frontend-dashboard"
+    },
+    {
+      "type": "BELONGS_TO",
+      "source_label": "Issue",
+      "source_name": "OAuth2 token refresh fails silently",
+      "target_label": "Repository",
+      "target_name": "notification-engine"
+    },
+    {
+      "type": "BELONGS_TO",
+      "source_label": "Issue",
+      "source_name": "OAuth2 token refresh fails silently",
+      "target_label": "Repository",
+      "target_name": "data-pipeline"
+    },
+    {
+      "type": "BELONGS_TO",
+      "source_label": "Issue",
+      "source_name": "Dashboard shows stale data",
+      "target_label": "Repository",
+      "target_name": "frontend-dashboard"
+    },
+    {
+      "type": "BELONGS_TO",
+      "source_label": "Issue",
+      "source_name": "Dashboard shows stale data",
+      "target_label": "Repository",
+      "target_name": "auth-service"
+    },
+    {
+      "type": "BELONGS_TO",
+      "source_label": "Issue",
+      "source_name": "Rate limiter too aggressive",
+      "target_label": "Repository",
+      "target_name": "frontend-dashboard"
+    },
+    {
+      "type": "BELONGS_TO",
+      "source_label": "Issue",
+      "source_name": "Rate limiter too aggressive",
+      "target_label": "Repository",
+      "target_name": "auth-service"
+    },
+    {
+      "type": "BELONGS_TO",
+      "source_label": "Issue",
+      "source_name": "Search results not paginated",
+      "target_label": "Repository",
+      "target_name": "auth-service"
+    },
+    {
+      "type": "TARGETS",
+      "source_label": "PullRequest",
+      "source_name": "Fix OAuth2 token refresh",
+      "target_label": "Repository",
+      "target_name": "frontend-dashboard"
+    },
+    {
+      "type": "TARGETS",
+      "source_label": "PullRequest",
+      "source_name": "Add rate limiting middleware",
+      "target_label": "Repository",
+      "target_name": "auth-service"
+    },
+    {
+      "type": "TARGETS",
+      "source_label": "PullRequest",
+      "source_name": "Add rate limiting middleware",
+      "target_label": "Repository",
+      "target_name": "api-gateway"
+    },
+    {
+      "type": "TARGETS",
+      "source_label": "PullRequest",
+      "source_name": "Migrate to PostgreSQL 16",
+      "target_label": "Repository",
+      "target_name": "api-gateway"
+    },
+    {
+      "type": "TARGETS",
+      "source_label": "PullRequest",
+      "source_name": "Implement WebSocket notifications",
+      "target_label": "Repository",
+      "target_name": "auth-service"
+    },
+    {
+      "type": "TARGETS",
+      "source_label": "PullRequest",
+      "source_name": "Add Prometheus metrics",
+      "target_label": "Repository",
+      "target_name": "notification-engine"
+    },
+    {
+      "type": "TARGETS",
+      "source_label": "PullRequest",
+      "source_name": "Add Prometheus metrics",
+      "target_label": "Repository",
+      "target_name": "api-gateway"
+    },
+    {
+      "type": "FIXES",
+      "source_label": "PullRequest",
+      "source_name": "Fix OAuth2 token refresh",
+      "target_label": "Issue",
+      "target_name": "Memory leak in worker pool"
+    },
+    {
+      "type": "FIXES",
+      "source_label": "PullRequest",
+      "source_name": "Fix OAuth2 token refresh",
+      "target_label": "Issue",
+      "target_name": "Search results not paginated"
+    },
+    {
+      "type": "FIXES",
+      "source_label": "PullRequest",
+      "source_name": "Add rate limiting middleware",
+      "target_label": "Issue",
+      "target_name": "Search results not paginated"
+    },
+    {
+      "type": "FIXES",
+      "source_label": "PullRequest",
+      "source_name": "Add rate limiting middleware",
+      "target_label": "Issue",
+      "target_name": "Rate limiter too aggressive"
+    },
+    {
+      "type": "FIXES",
+      "source_label": "PullRequest",
+      "source_name": "Migrate to PostgreSQL 16",
+      "target_label": "Issue",
+      "target_name": "OAuth2 token refresh fails silently"
+    },
+    {
+      "type": "FIXES",
+      "source_label": "PullRequest",
+      "source_name": "Implement WebSocket notifications",
+      "target_label": "Issue",
+      "target_name": "OAuth2 token refresh fails silently"
+    },
+    {
+      "type": "FIXES",
+      "source_label": "PullRequest",
+      "source_name": "Add Prometheus metrics",
+      "target_label": "Issue",
+      "target_name": "OAuth2 token refresh fails silently"
+    },
+    {
+      "type": "FIXES",
+      "source_label": "PullRequest",
+      "source_name": "Add Prometheus metrics",
+      "target_label": "Issue",
+      "target_name": "Rate limiter too aggressive"
+    },
+    {
+      "type": "DEPLOYED_TO",
+      "source_label": "Deployment",
+      "source_name": "Production v2.4.1",
+      "target_label": "Service",
+      "target_name": "cdn-proxy"
+    },
+    {
+      "type": "DEPLOYED_TO",
+      "source_label": "Deployment",
+      "source_name": "Staging v2.5.0-rc1",
+      "target_label": "Service",
+      "target_name": "payment-gateway"
+    },
+    {
+      "type": "DEPLOYED_TO",
+      "source_label": "Deployment",
+      "source_name": "Canary deploy auth-service",
+      "target_label": "Service",
+      "target_name": "user-api"
+    },
+    {
+      "type": "DEPLOYED_TO",
+      "source_label": "Deployment",
+      "source_name": "Hotfix v2.4.2",
+      "target_label": "Service",
+      "target_name": "cdn-proxy"
+    },
+    {
+      "type": "DEPLOYED_TO",
+      "source_label": "Deployment",
+      "source_name": "Blue/Green switch v3.0.0",
+      "target_label": "Service",
+      "target_name": "cdn-proxy"
+    },
+    {
+      "type": "DEPLOYED_TO",
+      "source_label": "Deployment",
+      "source_name": "Blue/Green switch v3.0.0",
+      "target_label": "Service",
+      "target_name": "notification-service"
+    },
+    {
+      "type": "TRIGGERED_BY",
+      "source_label": "Deployment",
+      "source_name": "Production v2.4.1",
+      "target_label": "PullRequest",
+      "target_name": "Add rate limiting middleware"
+    },
+    {
+      "type": "TRIGGERED_BY",
+      "source_label": "Deployment",
+      "source_name": "Production v2.4.1",
+      "target_label": "PullRequest",
+      "target_name": "Implement WebSocket notifications"
+    },
+    {
+      "type": "TRIGGERED_BY",
+      "source_label": "Deployment",
+      "source_name": "Staging v2.5.0-rc1",
+      "target_label": "PullRequest",
+      "target_name": "Add Prometheus metrics"
+    },
+    {
+      "type": "TRIGGERED_BY",
+      "source_label": "Deployment",
+      "source_name": "Staging v2.5.0-rc1",
+      "target_label": "PullRequest",
+      "target_name": "Migrate to PostgreSQL 16"
+    },
+    {
+      "type": "TRIGGERED_BY",
+      "source_label": "Deployment",
+      "source_name": "Canary deploy auth-service",
+      "target_label": "PullRequest",
+      "target_name": "Implement WebSocket notifications"
+    },
+    {
+      "type": "TRIGGERED_BY",
+      "source_label": "Deployment",
+      "source_name": "Hotfix v2.4.2",
+      "target_label": "PullRequest",
+      "target_name": "Add rate limiting middleware"
+    },
+    {
+      "type": "TRIGGERED_BY",
+      "source_label": "Deployment",
+      "source_name": "Blue/Green switch v3.0.0",
+      "target_label": "PullRequest",
+      "target_name": "Add Prometheus metrics"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Service",
+      "source_name": "user-api",
+      "target_label": "Service",
+      "target_name": "cdn-proxy"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Service",
+      "source_name": "payment-gateway",
+      "target_label": "Service",
+      "target_name": "cdn-proxy"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Service",
+      "source_name": "payment-gateway",
+      "target_label": "Service",
+      "target_name": "user-api"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Service",
+      "source_name": "notification-service",
+      "target_label": "Service",
+      "target_name": "search-indexer"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Service",
+      "source_name": "search-indexer",
+      "target_label": "Service",
+      "target_name": "payment-gateway"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Service",
+      "source_name": "cdn-proxy",
+      "target_label": "Service",
+      "target_name": "payment-gateway"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Service",
+      "source_name": "cdn-proxy",
+      "target_label": "Service",
+      "target_name": "notification-service"
+    },
+    {
+      "type": "CAUSED_INCIDENT",
+      "source_label": "Deployment",
+      "source_name": "Production v2.4.1",
+      "target_label": "Incident",
+      "target_name": "INC-2025-078 API latency spike"
+    },
+    {
+      "type": "CAUSED_INCIDENT",
+      "source_label": "Deployment",
+      "source_name": "Production v2.4.1",
+      "target_label": "Incident",
+      "target_name": "INC-2025-156 DDoS mitigation"
+    },
+    {
+      "type": "CAUSED_INCIDENT",
+      "source_label": "Deployment",
+      "source_name": "Staging v2.5.0-rc1",
+      "target_label": "Incident",
+      "target_name": "INC-2025-078 API latency spike"
+    },
+    {
+      "type": "CAUSED_INCIDENT",
+      "source_label": "Deployment",
+      "source_name": "Canary deploy auth-service",
+      "target_label": "Incident",
+      "target_name": "INC-2025-189 Data corruption"
+    },
+    {
+      "type": "CAUSED_INCIDENT",
+      "source_label": "Deployment",
+      "source_name": "Hotfix v2.4.2",
+      "target_label": "Incident",
+      "target_name": "INC-2025-189 Data corruption"
+    },
+    {
+      "type": "CAUSED_INCIDENT",
+      "source_label": "Deployment",
+      "source_name": "Hotfix v2.4.2",
+      "target_label": "Incident",
+      "target_name": "INC-2025-078 API latency spike"
+    },
+    {
+      "type": "CAUSED_INCIDENT",
+      "source_label": "Deployment",
+      "source_name": "Blue/Green switch v3.0.0",
+      "target_label": "Incident",
+      "target_name": "INC-2025-156 DDoS mitigation"
+    },
+    {
+      "type": "AFFECTED",
+      "source_label": "Incident",
+      "source_name": "INC-2025-041 Database failover",
+      "target_label": "Service",
+      "target_name": "payment-gateway"
+    },
+    {
+      "type": "AFFECTED",
+      "source_label": "Incident",
+      "source_name": "INC-2025-078 API latency spike",
+      "target_label": "Service",
+      "target_name": "user-api"
+    },
+    {
+      "type": "AFFECTED",
+      "source_label": "Incident",
+      "source_name": "INC-2025-078 API latency spike",
+      "target_label": "Service",
+      "target_name": "search-indexer"
+    },
+    {
+      "type": "AFFECTED",
+      "source_label": "Incident",
+      "source_name": "INC-2025-112 Certificate expiry",
+      "target_label": "Service",
+      "target_name": "notification-service"
+    },
+    {
+      "type": "AFFECTED",
+      "source_label": "Incident",
+      "source_name": "INC-2025-156 DDoS mitigation",
+      "target_label": "Service",
+      "target_name": "payment-gateway"
+    },
+    {
+      "type": "AFFECTED",
+      "source_label": "Incident",
+      "source_name": "INC-2025-156 DDoS mitigation",
+      "target_label": "Service",
+      "target_name": "notification-service"
+    },
+    {
+      "type": "AFFECTED",
+      "source_label": "Incident",
+      "source_name": "INC-2025-189 Data corruption",
+      "target_label": "Service",
+      "target_name": "payment-gateway"
+    },
+    {
+      "type": "AFFECTED",
+      "source_label": "Incident",
+      "source_name": "INC-2025-189 Data corruption",
+      "target_label": "Service",
+      "target_name": "search-indexer"
+    },
+    {
+      "type": "ON_CALL",
+      "source_label": "Person",
+      "source_name": "Staff Engineer Sarah Chen",
+      "target_label": "Service",
+      "target_name": "user-api"
+    },
+    {
+      "type": "ON_CALL",
+      "source_label": "Person",
+      "source_name": "SRE Lead James Morrison",
+      "target_label": "Service",
+      "target_name": "search-indexer"
+    },
+    {
+      "type": "ON_CALL",
+      "source_label": "Person",
+      "source_name": "Principal Engineer Maria Rodriguez",
+      "target_label": "Service",
+      "target_name": "payment-gateway"
+    },
+    {
+      "type": "ON_CALL",
+      "source_label": "Person",
+      "source_name": "DevOps Manager David Park",
+      "target_label": "Service",
+      "target_name": "cdn-proxy"
+    },
+    {
+      "type": "ON_CALL",
+      "source_label": "Person",
+      "source_name": "DevOps Manager David Park",
+      "target_label": "Service",
+      "target_name": "user-api"
+    },
+    {
+      "type": "ON_CALL",
+      "source_label": "Person",
+      "source_name": "Security Engineer Elena Volkov",
+      "target_label": "Service",
+      "target_name": "search-indexer"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Repository",
+      "source_name": "auth-service",
+      "target_label": "Service",
+      "target_name": "payment-gateway"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Repository",
+      "source_name": "auth-service",
+      "target_label": "Service",
+      "target_name": "search-indexer"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Repository",
+      "source_name": "frontend-dashboard",
+      "target_label": "Service",
+      "target_name": "search-indexer"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Repository",
+      "source_name": "api-gateway",
+      "target_label": "Service",
+      "target_name": "notification-service"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Repository",
+      "source_name": "data-pipeline",
+      "target_label": "Service",
+      "target_name": "user-api"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Repository",
+      "source_name": "notification-engine",
+      "target_label": "Service",
+      "target_name": "user-api"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Repository",
+      "source_name": "notification-engine",
+      "target_label": "Service",
+      "target_name": "cdn-proxy"
+    }
+  ],
+  "documents": [
+    {
+      "template_id": "sprint_retro",
+      "template_name": "Sprint Retrospective",
+      "title": "Sprint Retrospective: Staff Engineer Sarah Chen",
+      "content": "# Sprint Retrospective\n\n**Date:** 2026-09-10  \n**Domain:** Software Engineering  \n**Reference:** Person: Staff Engineer Sarah Chen, Organization: TechStream Inc, PullRequest: Fix OAuth2 token refresh, Issue: Memory leak in worker pool\n\n## Summary\n\nThis sprint retrospective documents notes from sprint retrospective meetings. It pertains to Person: Staff Engineer Sarah Chen, Organization: TechStream Inc, PullRequest: Fix OAuth2 token refresh, Issue: Memory leak in worker pool and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Staff Engineer Sarah Chen, Organization: TechStream Inc, PullRequest: Fix OAuth2 token refresh, Issue: Memory leak in worker pool are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Staff Engineer Sarah Chen, Organization: TechStream Inc, PullRequest: Fix OAuth2 token refresh, Issue: Memory leak in worker pool, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior sprint retrospective records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "sprint_retro",
+      "template_name": "Sprint Retrospective",
+      "title": "Sprint Retrospective: SRE Lead James Morrison",
+      "content": "# Sprint Retrospective\n\n**Date:** 2025-10-04  \n**Domain:** Software Engineering  \n**Reference:** Person: SRE Lead James Morrison, Organization: CloudScale Systems, PullRequest: Add rate limiting middleware, Issue: OAuth2 token refresh fails silently\n\n## Summary\n\nThis sprint retrospective documents notes from sprint retrospective meetings. It pertains to Person: SRE Lead James Morrison, Organization: CloudScale Systems, PullRequest: Add rate limiting middleware, Issue: OAuth2 token refresh fails silently and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: SRE Lead James Morrison, Organization: CloudScale Systems, PullRequest: Add rate limiting middleware, Issue: OAuth2 token refresh fails silently are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: SRE Lead James Morrison, Organization: CloudScale Systems, PullRequest: Add rate limiting middleware, Issue: OAuth2 token refresh fails silently, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior sprint retrospective records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "sprint_retro",
+      "template_name": "Sprint Retrospective",
+      "title": "Sprint Retrospective: Principal Engineer Maria Rodriguez",
+      "content": "# Sprint Retrospective\n\n**Date:** 2025-12-05  \n**Domain:** Software Engineering  \n**Reference:** Person: Principal Engineer Maria Rodriguez, Organization: DataPipe Solutions, PullRequest: Migrate to PostgreSQL 16, Issue: Dashboard shows stale data\n\n## Summary\n\nThis sprint retrospective documents notes from sprint retrospective meetings. It pertains to Person: Principal Engineer Maria Rodriguez, Organization: DataPipe Solutions, PullRequest: Migrate to PostgreSQL 16, Issue: Dashboard shows stale data and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Principal Engineer Maria Rodriguez, Organization: DataPipe Solutions, PullRequest: Migrate to PostgreSQL 16, Issue: Dashboard shows stale data are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Principal Engineer Maria Rodriguez, Organization: DataPipe Solutions, PullRequest: Migrate to PostgreSQL 16, Issue: Dashboard shows stale data, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior sprint retrospective records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "sprint_retro",
+      "template_name": "Sprint Retrospective",
+      "title": "Sprint Retrospective: DevOps Manager David Park",
+      "content": "# Sprint Retrospective\n\n**Date:** 2026-05-11  \n**Domain:** Software Engineering  \n**Reference:** Person: DevOps Manager David Park, Organization: Nexus Platform Corp, PullRequest: Implement WebSocket notifications, Issue: Rate limiter too aggressive\n\n## Summary\n\nThis sprint retrospective documents notes from sprint retrospective meetings. It pertains to Person: DevOps Manager David Park, Organization: Nexus Platform Corp, PullRequest: Implement WebSocket notifications, Issue: Rate limiter too aggressive and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: DevOps Manager David Park, Organization: Nexus Platform Corp, PullRequest: Implement WebSocket notifications, Issue: Rate limiter too aggressive are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: DevOps Manager David Park, Organization: Nexus Platform Corp, PullRequest: Implement WebSocket notifications, Issue: Rate limiter too aggressive, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior sprint retrospective records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "sprint_retro",
+      "template_name": "Sprint Retrospective",
+      "title": "Sprint Retrospective: Security Engineer Elena Volkov",
+      "content": "# Sprint Retrospective\n\n**Date:** 2026-10-08  \n**Domain:** Software Engineering  \n**Reference:** Person: Security Engineer Elena Volkov, Organization: OpenGrid Technologies, PullRequest: Add Prometheus metrics, Issue: Search results not paginated\n\n## Summary\n\nThis sprint retrospective documents notes from sprint retrospective meetings. It pertains to Person: Security Engineer Elena Volkov, Organization: OpenGrid Technologies, PullRequest: Add Prometheus metrics, Issue: Search results not paginated and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Security Engineer Elena Volkov, Organization: OpenGrid Technologies, PullRequest: Add Prometheus metrics, Issue: Search results not paginated are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Security Engineer Elena Volkov, Organization: OpenGrid Technologies, PullRequest: Add Prometheus metrics, Issue: Search results not paginated, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior sprint retrospective records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "incident_report",
+      "template_name": "Incident Report",
+      "title": "Incident Report: INC-2025-041 Database failover",
+      "content": "# Incident Report\n\n**Date:** 2025-12-04  \n**Domain:** Software Engineering  \n**Reference:** Incident: INC-2025-041 Database failover, Service: user-api, Person: Staff Engineer Sarah Chen, Deployment: Production v2.4.1\n\n## Summary\n\nThis incident report documents post-incident review documents. It pertains to Incident: INC-2025-041 Database failover, Service: user-api, Person: Staff Engineer Sarah Chen, Deployment: Production v2.4.1 and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Incident: INC-2025-041 Database failover, Service: user-api, Person: Staff Engineer Sarah Chen, Deployment: Production v2.4.1 are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Incident: INC-2025-041 Database failover, Service: user-api, Person: Staff Engineer Sarah Chen, Deployment: Production v2.4.1, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior incident report records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "incident_report",
+      "template_name": "Incident Report",
+      "title": "Incident Report: INC-2025-078 API latency spike",
+      "content": "# Incident Report\n\n**Date:** 2025-10-30  \n**Domain:** Software Engineering  \n**Reference:** Incident: INC-2025-078 API latency spike, Service: payment-gateway, Person: SRE Lead James Morrison, Deployment: Staging v2.5.0-rc1\n\n## Summary\n\nThis incident report documents post-incident review documents. It pertains to Incident: INC-2025-078 API latency spike, Service: payment-gateway, Person: SRE Lead James Morrison, Deployment: Staging v2.5.0-rc1 and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Incident: INC-2025-078 API latency spike, Service: payment-gateway, Person: SRE Lead James Morrison, Deployment: Staging v2.5.0-rc1 are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Incident: INC-2025-078 API latency spike, Service: payment-gateway, Person: SRE Lead James Morrison, Deployment: Staging v2.5.0-rc1, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior incident report records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "incident_report",
+      "template_name": "Incident Report",
+      "title": "Incident Report: INC-2025-112 Certificate expiry",
+      "content": "# Incident Report\n\n**Date:** 2026-08-18  \n**Domain:** Software Engineering  \n**Reference:** Incident: INC-2025-112 Certificate expiry, Service: notification-service, Person: Principal Engineer Maria Rodriguez, Deployment: Canary deploy auth-service\n\n## Summary\n\nThis incident report documents post-incident review documents. It pertains to Incident: INC-2025-112 Certificate expiry, Service: notification-service, Person: Principal Engineer Maria Rodriguez, Deployment: Canary deploy auth-service and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Incident: INC-2025-112 Certificate expiry, Service: notification-service, Person: Principal Engineer Maria Rodriguez, Deployment: Canary deploy auth-service are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Incident: INC-2025-112 Certificate expiry, Service: notification-service, Person: Principal Engineer Maria Rodriguez, Deployment: Canary deploy auth-service, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior incident report records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "incident_report",
+      "template_name": "Incident Report",
+      "title": "Incident Report: INC-2025-156 DDoS mitigation",
+      "content": "# Incident Report\n\n**Date:** 2026-05-31  \n**Domain:** Software Engineering  \n**Reference:** Incident: INC-2025-156 DDoS mitigation, Service: search-indexer, Person: DevOps Manager David Park, Deployment: Hotfix v2.4.2\n\n## Summary\n\nThis incident report documents post-incident review documents. It pertains to Incident: INC-2025-156 DDoS mitigation, Service: search-indexer, Person: DevOps Manager David Park, Deployment: Hotfix v2.4.2 and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Incident: INC-2025-156 DDoS mitigation, Service: search-indexer, Person: DevOps Manager David Park, Deployment: Hotfix v2.4.2 are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Incident: INC-2025-156 DDoS mitigation, Service: search-indexer, Person: DevOps Manager David Park, Deployment: Hotfix v2.4.2, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior incident report records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "incident_report",
+      "template_name": "Incident Report",
+      "title": "Incident Report: INC-2025-189 Data corruption",
+      "content": "# Incident Report\n\n**Date:** 2025-11-07  \n**Domain:** Software Engineering  \n**Reference:** Incident: INC-2025-189 Data corruption, Service: cdn-proxy, Person: Security Engineer Elena Volkov, Deployment: Blue/Green switch v3.0.0\n\n## Summary\n\nThis incident report documents post-incident review documents. It pertains to Incident: INC-2025-189 Data corruption, Service: cdn-proxy, Person: Security Engineer Elena Volkov, Deployment: Blue/Green switch v3.0.0 and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Incident: INC-2025-189 Data corruption, Service: cdn-proxy, Person: Security Engineer Elena Volkov, Deployment: Blue/Green switch v3.0.0 are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Incident: INC-2025-189 Data corruption, Service: cdn-proxy, Person: Security Engineer Elena Volkov, Deployment: Blue/Green switch v3.0.0, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior incident report records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "design_doc",
+      "template_name": "Design Document",
+      "title": "Design Document: Staff Engineer Sarah Chen",
+      "content": "# Design Document\n\n**Date:** 2026-06-04  \n**Domain:** Software Engineering  \n**Reference:** Person: Staff Engineer Sarah Chen, Repository: auth-service, Service: user-api\n\n## Summary\n\nThis design document documents technical design documents for new features. It pertains to Person: Staff Engineer Sarah Chen, Repository: auth-service, Service: user-api and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Staff Engineer Sarah Chen, Repository: auth-service, Service: user-api are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Staff Engineer Sarah Chen, Repository: auth-service, Service: user-api, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior design document records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "design_doc",
+      "template_name": "Design Document",
+      "title": "Design Document: SRE Lead James Morrison",
+      "content": "# Design Document\n\n**Date:** 2026-08-17  \n**Domain:** Software Engineering  \n**Reference:** Person: SRE Lead James Morrison, Repository: frontend-dashboard, Service: payment-gateway\n\n## Summary\n\nThis design document documents technical design documents for new features. It pertains to Person: SRE Lead James Morrison, Repository: frontend-dashboard, Service: payment-gateway and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: SRE Lead James Morrison, Repository: frontend-dashboard, Service: payment-gateway are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: SRE Lead James Morrison, Repository: frontend-dashboard, Service: payment-gateway, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior design document records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "design_doc",
+      "template_name": "Design Document",
+      "title": "Design Document: Principal Engineer Maria Rodriguez",
+      "content": "# Design Document\n\n**Date:** 2026-04-01  \n**Domain:** Software Engineering  \n**Reference:** Person: Principal Engineer Maria Rodriguez, Repository: api-gateway, Service: notification-service\n\n## Summary\n\nThis design document documents technical design documents for new features. It pertains to Person: Principal Engineer Maria Rodriguez, Repository: api-gateway, Service: notification-service and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Principal Engineer Maria Rodriguez, Repository: api-gateway, Service: notification-service are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Principal Engineer Maria Rodriguez, Repository: api-gateway, Service: notification-service, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior design document records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "design_doc",
+      "template_name": "Design Document",
+      "title": "Design Document: DevOps Manager David Park",
+      "content": "# Design Document\n\n**Date:** 2026-02-02  \n**Domain:** Software Engineering  \n**Reference:** Person: DevOps Manager David Park, Repository: data-pipeline, Service: search-indexer\n\n## Summary\n\nThis design document documents technical design documents for new features. It pertains to Person: DevOps Manager David Park, Repository: data-pipeline, Service: search-indexer and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: DevOps Manager David Park, Repository: data-pipeline, Service: search-indexer are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: DevOps Manager David Park, Repository: data-pipeline, Service: search-indexer, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior design document records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "design_doc",
+      "template_name": "Design Document",
+      "title": "Design Document: Security Engineer Elena Volkov",
+      "content": "# Design Document\n\n**Date:** 2024-08-21  \n**Domain:** Software Engineering  \n**Reference:** Person: Security Engineer Elena Volkov, Repository: notification-engine, Service: cdn-proxy\n\n## Summary\n\nThis design document documents technical design documents for new features. It pertains to Person: Security Engineer Elena Volkov, Repository: notification-engine, Service: cdn-proxy and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Security Engineer Elena Volkov, Repository: notification-engine, Service: cdn-proxy are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Security Engineer Elena Volkov, Repository: notification-engine, Service: cdn-proxy, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior design document records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "pr_description",
+      "template_name": "Pull Request Description",
+      "title": "Pull Request Description: Staff Engineer Sarah Chen",
+      "content": "# Pull Request Description\n\n**Date:** 2026-08-28  \n**Domain:** Software Engineering  \n**Reference:** Person: Staff Engineer Sarah Chen, PullRequest: Fix OAuth2 token refresh, Repository: auth-service\n\n## Summary\n\nThis pull request description documents detailed pr descriptions with context. It pertains to Person: Staff Engineer Sarah Chen, PullRequest: Fix OAuth2 token refresh, Repository: auth-service and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Staff Engineer Sarah Chen, PullRequest: Fix OAuth2 token refresh, Repository: auth-service are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Staff Engineer Sarah Chen, PullRequest: Fix OAuth2 token refresh, Repository: auth-service, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior pull request description records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "pr_description",
+      "template_name": "Pull Request Description",
+      "title": "Pull Request Description: SRE Lead James Morrison",
+      "content": "# Pull Request Description\n\n**Date:** 2026-07-23  \n**Domain:** Software Engineering  \n**Reference:** Person: SRE Lead James Morrison, PullRequest: Add rate limiting middleware, Repository: frontend-dashboard\n\n## Summary\n\nThis pull request description documents detailed pr descriptions with context. It pertains to Person: SRE Lead James Morrison, PullRequest: Add rate limiting middleware, Repository: frontend-dashboard and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: SRE Lead James Morrison, PullRequest: Add rate limiting middleware, Repository: frontend-dashboard are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: SRE Lead James Morrison, PullRequest: Add rate limiting middleware, Repository: frontend-dashboard, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior pull request description records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "pr_description",
+      "template_name": "Pull Request Description",
+      "title": "Pull Request Description: Principal Engineer Maria Rodriguez",
+      "content": "# Pull Request Description\n\n**Date:** 2024-07-13  \n**Domain:** Software Engineering  \n**Reference:** Person: Principal Engineer Maria Rodriguez, PullRequest: Migrate to PostgreSQL 16, Repository: api-gateway\n\n## Summary\n\nThis pull request description documents detailed pr descriptions with context. It pertains to Person: Principal Engineer Maria Rodriguez, PullRequest: Migrate to PostgreSQL 16, Repository: api-gateway and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Principal Engineer Maria Rodriguez, PullRequest: Migrate to PostgreSQL 16, Repository: api-gateway are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Principal Engineer Maria Rodriguez, PullRequest: Migrate to PostgreSQL 16, Repository: api-gateway, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior pull request description records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "pr_description",
+      "template_name": "Pull Request Description",
+      "title": "Pull Request Description: DevOps Manager David Park",
+      "content": "# Pull Request Description\n\n**Date:** 2024-07-02  \n**Domain:** Software Engineering  \n**Reference:** Person: DevOps Manager David Park, PullRequest: Implement WebSocket notifications, Repository: data-pipeline\n\n## Summary\n\nThis pull request description documents detailed pr descriptions with context. It pertains to Person: DevOps Manager David Park, PullRequest: Implement WebSocket notifications, Repository: data-pipeline and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: DevOps Manager David Park, PullRequest: Implement WebSocket notifications, Repository: data-pipeline are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: DevOps Manager David Park, PullRequest: Implement WebSocket notifications, Repository: data-pipeline, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior pull request description records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "pr_description",
+      "template_name": "Pull Request Description",
+      "title": "Pull Request Description: Security Engineer Elena Volkov",
+      "content": "# Pull Request Description\n\n**Date:** 2024-05-11  \n**Domain:** Software Engineering  \n**Reference:** Person: Security Engineer Elena Volkov, PullRequest: Add Prometheus metrics, Repository: notification-engine\n\n## Summary\n\nThis pull request description documents detailed pr descriptions with context. It pertains to Person: Security Engineer Elena Volkov, PullRequest: Add Prometheus metrics, Repository: notification-engine and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Security Engineer Elena Volkov, PullRequest: Add Prometheus metrics, Repository: notification-engine are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Security Engineer Elena Volkov, PullRequest: Add Prometheus metrics, Repository: notification-engine, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior pull request description records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "email",
+      "template_name": "Engineering Email",
+      "title": "Engineering Email: Staff Engineer Sarah Chen",
+      "content": "# Engineering Email\n\n**Date:** 2026-04-16  \n**Domain:** Software Engineering  \n**Reference:** Person: Staff Engineer Sarah Chen, Organization: TechStream Inc\n\n## Summary\n\nThis engineering email documents internal engineering team communications. It pertains to Person: Staff Engineer Sarah Chen, Organization: TechStream Inc and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Staff Engineer Sarah Chen, Organization: TechStream Inc are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Staff Engineer Sarah Chen, Organization: TechStream Inc, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior engineering email records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "email",
+      "template_name": "Engineering Email",
+      "title": "Engineering Email: SRE Lead James Morrison",
+      "content": "# Engineering Email\n\n**Date:** 2026-08-19  \n**Domain:** Software Engineering  \n**Reference:** Person: SRE Lead James Morrison, Organization: CloudScale Systems\n\n## Summary\n\nThis engineering email documents internal engineering team communications. It pertains to Person: SRE Lead James Morrison, Organization: CloudScale Systems and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: SRE Lead James Morrison, Organization: CloudScale Systems are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: SRE Lead James Morrison, Organization: CloudScale Systems, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior engineering email records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "email",
+      "template_name": "Engineering Email",
+      "title": "Engineering Email: Principal Engineer Maria Rodriguez",
+      "content": "# Engineering Email\n\n**Date:** 2025-12-18  \n**Domain:** Software Engineering  \n**Reference:** Person: Principal Engineer Maria Rodriguez, Organization: DataPipe Solutions\n\n## Summary\n\nThis engineering email documents internal engineering team communications. It pertains to Person: Principal Engineer Maria Rodriguez, Organization: DataPipe Solutions and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Principal Engineer Maria Rodriguez, Organization: DataPipe Solutions are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Principal Engineer Maria Rodriguez, Organization: DataPipe Solutions, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior engineering email records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "email",
+      "template_name": "Engineering Email",
+      "title": "Engineering Email: DevOps Manager David Park",
+      "content": "# Engineering Email\n\n**Date:** 2024-02-26  \n**Domain:** Software Engineering  \n**Reference:** Person: DevOps Manager David Park, Organization: Nexus Platform Corp\n\n## Summary\n\nThis engineering email documents internal engineering team communications. It pertains to Person: DevOps Manager David Park, Organization: Nexus Platform Corp and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: DevOps Manager David Park, Organization: Nexus Platform Corp are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: DevOps Manager David Park, Organization: Nexus Platform Corp, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior engineering email records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    },
+    {
+      "template_id": "email",
+      "template_name": "Engineering Email",
+      "title": "Engineering Email: Security Engineer Elena Volkov",
+      "content": "# Engineering Email\n\n**Date:** 2024-01-29  \n**Domain:** Software Engineering  \n**Reference:** Person: Security Engineer Elena Volkov, Organization: OpenGrid Technologies\n\n## Summary\n\nThis engineering email documents internal engineering team communications. It pertains to Person: Security Engineer Elena Volkov, Organization: OpenGrid Technologies and was prepared as part of standard software engineering operations.\n\n## Details\n\nThe following information has been compiled based on available records and observations. All referenced entities have been verified against the current knowledge graph.\n\nKey findings and observations related to Person: Security Engineer Elena Volkov, Organization: OpenGrid Technologies are documented below. This record should be reviewed in conjunction with related documents and entity records for complete context.\n\n## Recommendations\n\nBased on the analysis of Person: Security Engineer Elena Volkov, Organization: OpenGrid Technologies, the following actions are recommended for continued monitoring and follow-up. Please refer to the relevant entity profiles and prior engineering email records for historical context and trend analysis.\n\n---\n\n*Document generated for Software Engineering context graph application.*"
+    }
+  ],
+  "traces": [
+    {
+      "id": "deploy_decision",
+      "task": "Decide whether to deploy the relevant criteria to production on a Friday afternoon",
+      "steps": [
+        {
+          "thought": "Assess the risk of the changes",
+          "action": "Review PR diff size, affected services, and test coverage",
+          "observation": "Review of data-pipeline completed. Identified 5 key factors relevant to the current decision context."
+        },
+        {
+          "thought": "Check for any ongoing incidents or upcoming events",
+          "action": "Query active incidents and deployment calendar",
+          "observation": "Found 5 relevant records in the software engineering knowledge graph. Top result: OpenGrid Technologies with 5 connected entities."
+        },
+        {
+          "thought": "Evaluate rollback capability",
+          "action": "Check if the deployment can be easily rolled back",
+          "observation": "Verified INC-2025-078 API latency spike against software engineering standards. All 5 checked parameters within acceptable thresholds."
+        },
+        {
+          "thought": "Consider team availability for monitoring",
+          "action": "Check on-call schedule and team availability",
+          "observation": "Verified Fix OAuth2 token refresh against software engineering standards. All 8 checked parameters within acceptable thresholds."
+        }
+      ],
+      "outcome": "Decision: Approve deployment. Rationale: analysis of available data and alignment with operational guidelines"
+    },
+    {
+      "id": "incident_response",
+      "task": "Respond to sev1 incident affecting notification-service",
+      "steps": [
+        {
+          "thought": "Identify the scope and impact of the incident",
+          "action": "Query service dependency graph and recent deployments",
+          "observation": "Found 3 relevant records in the software engineering knowledge graph. Top result: Production Datacenter A with 4 connected entities."
+        },
+        {
+          "thought": "Determine if a recent deployment caused the issue",
+          "action": "Check deployment history for affected services in last 24 hours",
+          "observation": "Verified Production Datacenter against software engineering standards. All 8 checked parameters within acceptable thresholds."
+        },
+        {
+          "thought": "Decide between rollback and forward-fix",
+          "action": "Assess complexity of rollback vs implementing a fix",
+          "observation": "Action completed for Disaster Recovery Site. Results consistent with expected software engineering domain patterns."
+        }
+      ],
+      "outcome": "Action: immediate follow-up recommended. ETA to resolution: the assessed criteria"
+    },
+    {
+      "id": "tech_debt_prioritization",
+      "task": "Prioritize tech debt items for next quarter",
+      "steps": [
+        {
+          "thought": "Gather all open tech debt issues",
+          "action": "Query issues tagged as tech-debt across all repositories",
+          "observation": "Found 8 relevant records in the software engineering knowledge graph. Top result: Search results not paginated with 2 connected entities."
+        },
+        {
+          "thought": "Assess impact on team velocity and reliability",
+          "action": "Correlate tech debt items with incident history and cycle time",
+          "observation": "Action completed for Add rate limiting middleware. Results consistent with expected software engineering domain patterns."
+        },
+        {
+          "thought": "Estimate effort and ROI for each item",
+          "action": "Review similar past work for effort estimation",
+          "observation": "Review of TechStream Inc completed. Identified 2 key factors relevant to the current decision context."
+        }
+      ],
+      "outcome": "Priority list: the assessed criteria. Total estimated effort: the assessed criteria"
+    },
+    {
+      "id": "incident_triage",
+      "task": "Triage incoming incident report for payment-gateway with severity sev4",
+      "steps": [
+        {
+          "thought": "Assess the blast radius by checking service dependencies",
+          "action": "Query service dependency graph to identify upstream and downstream affected services",
+          "observation": "Found 10 relevant records in the software engineering knowledge graph. Top result: Add Prometheus metrics with 3 connected entities."
+        },
+        {
+          "thought": "Check for correlated incidents or ongoing issues",
+          "action": "Query active incidents affecting the same or dependent services",
+          "observation": "Found 11 relevant records in the software engineering knowledge graph. Top result: payment-gateway with 2 connected entities."
+        },
+        {
+          "thought": "Identify the on-call engineer and recent changes",
+          "action": "Find on-call person for the service and recent deployments in the last 24 hours",
+          "observation": "Action completed for api-gateway. Results consistent with expected software engineering domain patterns."
+        },
+        {
+          "thought": "Assign severity and route to appropriate responder",
+          "action": "Evaluate impact scope and assign final severity based on affected service count",
+          "observation": "Action completed for Sprint Retrospective. Results consistent with expected software engineering domain patterns."
+        }
+      ],
+      "outcome": "Triage result: the assessed criteria. Assigned to: the assessed criteria. Affected services: the assessed criteria"
+    },
+    {
+      "id": "code_review_assessment",
+      "task": "Assess review readiness and risk of the relevant criteria targeting frontend-dashboard",
+      "steps": [
+        {
+          "thought": "Evaluate the scope and complexity of changes",
+          "action": "Check PR lines added/removed and number of files changed",
+          "observation": "Verified Production Datacenter against software engineering standards. All 8 checked parameters within acceptable thresholds."
+        },
+        {
+          "thought": "Assess test coverage and CI status",
+          "action": "Query the PR status and linked issues for context",
+          "observation": "Found 6 relevant records in the software engineering knowledge graph. Top result: Canary deploy auth-service with 4 connected entities."
+        },
+        {
+          "thought": "Check for dependency on other PRs or blocked issues",
+          "action": "Find issues fixed by this PR and their current status",
+          "observation": "Action completed for OpenGrid Technologies. Results consistent with expected software engineering domain patterns."
+        },
+        {
+          "thought": "Identify appropriate reviewers based on code ownership",
+          "action": "Query developers who have authored or reviewed PRs for the same repository",
+          "observation": "Found 9 relevant records in the software engineering knowledge graph. Top result: Load Test Results with 6 connected entities."
+        }
+      ],
+      "outcome": "Review readiness: the assessed criteria. Risk: moderate. Recommended reviewers: the assessed criteria"
+    },
+    {
+      "id": "deployment_rollback",
+      "task": "Decide whether to rollback deployment DEP-2025-0001 to notification-service",
+      "steps": [
+        {
+          "thought": "Assess the severity and scope of the post-deployment issue",
+          "action": "Query incidents caused by this deployment and affected services",
+          "observation": "Found 6 relevant records in the software engineering knowledge graph. Top result: Incident Report with 5 connected entities."
+        },
+        {
+          "thought": "Evaluate if a forward-fix is feasible within the SLA",
+          "action": "Check for open PRs that fix the related issues and their review status",
+          "observation": "Verified Blue/Green switch v3.0.0 against software engineering standards. All 7 checked parameters within acceptable thresholds."
+        },
+        {
+          "thought": "Verify rollback safety by checking for data migrations or breaking changes",
+          "action": "Review the PR that triggered the deployment and its change scope",
+          "observation": "Review of INC-2025-156 DDoS mitigation completed. Identified 5 key factors relevant to the current decision context."
+        },
+        {
+          "thought": "Confirm rollback target version and dependencies",
+          "action": "Query previous successful deployments for the service",
+          "observation": "Found 8 relevant records in the software engineering knowledge graph. Top result: Runbook for Database Failover with 5 connected entities."
+        }
+      ],
+      "outcome": "Decision: Approve. Rollback to: the assessed criteria. Estimated recovery: the assessed criteria"
+    },
+    {
+      "id": "capacity_planning",
+      "task": "Plan capacity for notification-service ahead of anticipated traffic increase",
+      "steps": [
+        {
+          "thought": "Assess current service health and resource utilization",
+          "action": "Query service status and recent incident history for degradation patterns",
+          "observation": "Found 11 relevant records in the software engineering knowledge graph. Top result: Architecture Review Board with 2 connected entities."
+        },
+        {
+          "thought": "Map service dependencies that may become bottlenecks",
+          "action": "Traverse the DEPENDS_ON graph to identify critical path services",
+          "observation": "Action completed for Add Prometheus metrics. Results consistent with expected software engineering domain patterns."
+        },
+        {
+          "thought": "Review deployment frequency and recent scaling changes",
+          "action": "Query deployment history for the service and its dependencies",
+          "observation": "Found 4 relevant records in the software engineering knowledge graph. Top result: Implement WebSocket notifications with 2 connected entities."
+        }
+      ],
+      "outcome": "Capacity plan: the assessed criteria. Bottleneck services: the assessed criteria. Scaling actions: the assessed criteria"
+    },
+    {
+      "id": "security_vulnerability",
+      "task": "Respond to security vulnerability reported in data-pipeline affecting payment-gateway",
+      "steps": [
+        {
+          "thought": "Assess the exposure scope across services",
+          "action": "Query services contained in the repository and their downstream dependents",
+          "observation": "Found 3 relevant records in the software engineering knowledge graph. Top result: Migrate to PostgreSQL 16 with 6 connected entities."
+        },
+        {
+          "thought": "Identify all deployments running the vulnerable version",
+          "action": "Find recent deployments for affected services and their versions",
+          "observation": "Action completed for Production Datacenter. Results consistent with expected software engineering domain patterns."
+        },
+        {
+          "thought": "Determine patching priority based on service criticality",
+          "action": "Check incident history and dependency count for affected services",
+          "observation": "Verified Migrate to PostgreSQL 16 against software engineering standards. All 5 checked parameters within acceptable thresholds."
+        },
+        {
+          "thought": "Coordinate fix through PR and expedited deployment",
+          "action": "Query open PRs targeting the repository and on-call engineers for the services",
+          "observation": "Found 10 relevant records in the software engineering knowledge graph. Top result: Rate limiter too aggressive with 3 connected entities."
+        }
+      ],
+      "outcome": "Severity: the assessed criteria. Affected services: the assessed criteria. Patch ETA: the assessed criteria"
+    },
+    {
+      "id": "dependency_upgrade",
+      "task": "Evaluate upgrading a critical dependency in auth-service",
+      "steps": [
+        {
+          "thought": "Map all services and repositories affected by this dependency",
+          "action": "Query services contained in the repository and their dependents",
+          "observation": "Found 4 relevant records in the software engineering knowledge graph. Top result: Memory leak in worker pool with 3 connected entities."
+        },
+        {
+          "thought": "Review historical incidents linked to dependency-related changes",
+          "action": "Find incidents caused by deployments to affected services",
+          "observation": "Action completed for Disaster Recovery Site. Results consistent with expected software engineering domain patterns."
+        },
+        {
+          "thought": "Assess testing requirements and breaking change risk",
+          "action": "Query open issues tagged against the repository and recent PR merge rates",
+          "observation": "Found 6 relevant records in the software engineering knowledge graph. Top result: Production Deploy Window with 5 connected entities."
+        }
+      ],
+      "outcome": "Upgrade decision: Approve. Impact: the assessed criteria services. Effort: the assessed criteria"
+    },
+    {
+      "id": "performance_optimization",
+      "task": "Investigate and optimize performance degradation in notification-service",
+      "steps": [
+        {
+          "thought": "Correlate performance degradation with recent deployments",
+          "action": "Query deployment history for the service in the last 7 days",
+          "observation": "Found 6 relevant records in the software engineering knowledge graph. Top result: Fix OAuth2 token refresh with 3 connected entities."
+        },
+        {
+          "thought": "Check if dependent services are contributing to latency",
+          "action": "Traverse DEPENDS_ON relationships and check health status of dependencies",
+          "observation": "Verified Runbook for Database Failover against software engineering standards. All 8 checked parameters within acceptable thresholds."
+        },
+        {
+          "thought": "Identify relevant incidents and their resolution patterns",
+          "action": "Find similar past incidents affecting this service and their resolution steps",
+          "observation": "Action completed for OAuth2 token refresh fails silently. Results consistent with expected software engineering domain patterns."
+        },
+        {
+          "thought": "Recommend optimization approach based on findings",
+          "action": "Review PRs that previously addressed performance issues in the same repository",
+          "observation": "Review of Architecture Decision Record completed. Identified 4 key factors relevant to the current decision context."
+        }
+      ],
+      "outcome": "Root cause: the assessed criteria. Optimization: the assessed criteria. Expected improvement: the assessed criteria"
+    }
+  ]
+}
