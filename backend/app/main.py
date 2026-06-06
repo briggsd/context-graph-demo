@@ -88,7 +88,7 @@ def get_memory_status() -> bool:
     return _memory_available
 
 from fastapi import Depends
-from app.auth import require_auth
+from app.auth import require_api_key, require_auth
 
 app = FastAPI(
     title="Software Engineering Context Graph",
@@ -113,7 +113,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(router, prefix="/api")
+app.include_router(router, prefix="/api", dependencies=[Depends(require_api_key)])
 
 
 @app.get("/health", dependencies=[])  # exempt from global BasicAuth

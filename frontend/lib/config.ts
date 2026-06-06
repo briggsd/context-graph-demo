@@ -18,9 +18,11 @@ export const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:800
  * Generate: python3 -c "import base64; print(base64.b64encode(b'user:pass').decode())"
  */
 export function apiHeaders(extra?: Record<string, string>): Record<string, string> {
-  const auth = process.env.NEXT_PUBLIC_BASIC_AUTH;
+  const auth   = process.env.NEXT_PUBLIC_BASIC_AUTH;
+  const apiKey = process.env.NEXT_PUBLIC_BACKEND_API_KEY;
   return {
-    ...(auth ? { Authorization: `Basic ${auth}` } : {}),
+    ...(auth   ? { Authorization: `Basic ${auth}` } : {}),
+    ...(apiKey ? { "X-Api-Key": apiKey }            : {}),
     ...extra,
   };
 }

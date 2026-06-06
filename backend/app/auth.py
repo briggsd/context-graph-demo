@@ -1,14 +1,21 @@
-"""Optional HTTP Basic Auth for all FastAPI routes.
+"""Auth dependencies for FastAPI routes.
 
-Set BASIC_AUTH_USER + BASIC_AUTH_PASSWORD environment variables to enable.
-If either var is unset, auth is disabled (local dev / trusted network).
+BasicAuth (BASIC_AUTH_USER + BASIC_AUTH_PASSWORD):
+  Browser-facing auth for the web UI layer.
+
+API key (BACKEND_API_KEY):
+  Header-based check for all /api/* routes — requires X-Api-Key header.
+  The frontend includes this via NEXT_PUBLIC_BACKEND_API_KEY env var.
+  Stops casual scanning of the public backend URL without adding CORS pain.
+
+Both are opt-in: if env vars are unset, the check is skipped (local dev).
 """
 from __future__ import annotations
 
 import os
 import secrets
 
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, Header, HTTPException, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 security = HTTPBasic(auto_error=False)
@@ -40,3 +47,21 @@ def require_auth(credentials: HTTPBasicCredentials | None = Depends(security)) -
             detail="Invalid credentials",
             headers={"WWW-Authenticate": "Basic"},
         )
+
+
+# ── API key auth ─────────────────────────────────────────────────────────────
+
+_API_KEY = os.environ.get("BACKEND_API_KEY", "")
+_API_KEY_ENABLED = bool(_API_KEY)
+
+
+def require_api_key(x_api_key: str | None = Header(default=None, alias="X-Api-Key")) -> None:
+    """Require X-Api-Key header on all /api/* routes when BACKEND_API_KEY is set."""
+    if not _API_KEY_ENABLED:
+        return
+
+    if x_api_key is None:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="X-Api-Key header required")
+
+    if not secrets.compare_digest(x_api_key.encode(), _API_KEY.encode()):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Invalid API key")
