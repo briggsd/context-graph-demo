@@ -11,5 +11,4 @@ COPY main.py ./
 
 EXPOSE 9091
 
-# Shell form so ${PORT:-9091} expands correctly on Railway and locally
-CMD uv run uvicorn main:app --host 0.0.0.0 --port ${PORT:-9091}
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "9091"]
