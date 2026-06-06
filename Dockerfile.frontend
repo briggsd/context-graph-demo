@@ -11,9 +11,13 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
-# Declare and expose the build-time API URL so Next.js bakes it into the bundle
+# Declare and expose build-time env vars so Next.js bakes them into the bundle
 ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_BASIC_AUTH
+ENV NEXT_PUBLIC_BASIC_AUTH=$NEXT_PUBLIC_BASIC_AUTH
+ARG NEXT_PUBLIC_BACKEND_API_KEY
+ENV NEXT_PUBLIC_BACKEND_API_KEY=$NEXT_PUBLIC_BACKEND_API_KEY
 RUN npm run build
 
 FROM node:22-alpine AS runner
